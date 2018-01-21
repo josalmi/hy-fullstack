@@ -1,5 +1,21 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
+
+const Otsikko = ({ kurssi }) => (
+    <h1>{kurssi}</h1>
+)
+
+const Sisalto = ({ osa1, tehtavia1, osa2, tehtavia2, osa3, tehtavia3}) => (
+    <Fragment>
+        <p>{osa1} {tehtavia1}</p>
+        <p>{osa2} {tehtavia2}</p>
+        <p>{osa3} {tehtavia3}</p>
+    </Fragment>
+)
+
+const Yhteensa = ({ tehtavia1, tehtavia2, tehtavia3 }) => (
+    <p>yhteensä {tehtavia1 + tehtavia2 + tehtavia3} tehtävää</p>
+)
 
 const App = () => {
   const kurssi = 'Half Stack -sovelluskehitys'
@@ -12,11 +28,9 @@ const App = () => {
 
   return (
     <div>
-      <h1>{kurssi}</h1>
-      <p>{osa1} {tehtavia1}</p>
-      <p>{osa2} {tehtavia2}</p>
-      <p>{osa3} {tehtavia3}</p>
-      <p>yhteensä {tehtavia1 + tehtavia2 + tehtavia3} tehtävää</p>
+      <Otsikko kurssi={kurssi} />
+      <Sisalto {...{osa1, tehtavia1, osa2, tehtavia2, osa3, tehtavia3}} />
+      <Yhteensa {...{tehtavia1, tehtavia2, tehtavia3}} />
     </div>
   )
 }
