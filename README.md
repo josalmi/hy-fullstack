@@ -33,5 +33,5 @@ Course material: <https://fullstack-hy.github.io/>
 ### Anecdotes ([solution](week1/e12-14/))
 
 - [x] 1.12 anekdootit osa1 (*)
-- [ ] 1.13 anekdootit osa2 (*)
-- [ ] 1.14 anekdootit osa3 (*)
+- [x] 1.13 anekdootit osa2 (*)
+- [x] 1.14 anekdootit osa3 (*)

@@ -1,20 +1,58 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+const Anecdote = ({ anecdote, votes }) => (
+  <div>
+    <div>{anecdote}</div>
+    <div>has {votes || 0} votes</div>
+  </div>
+)
+
 class App extends React.Component {
   state = {
-    selected: 0
+    selected: 0,
+    votes: {}
   }
 
-  handleClick = () => {
+  vote = () => {
+    this.setState(prevState => ({
+      votes: {
+        ...prevState.votes,
+        [prevState.selected]: (prevState.votes[prevState.selected] || 0) + 1
+      }
+    }))
+  }
+
+  nextAnecdote = () => {
     this.setState({ selected: Math.floor(Math.random()*anecdotes.length) })
   }
 
+  mostVotedIndex = () => {
+    return Object.keys(this.state.votes).reduce((best, index) => (
+      this.state.votes[index] > best.value
+        ? { index, value: this.state.votes[index] }
+        : best
+    ), { index: 0, value: -Infinity })
+    .index
+  }
+
   render() {
+    const mostVotedIndex = this.mostVotedIndex()
     return (
       <div>
-        <div>{this.props.anecdotes[this.state.selected]}</div>
-        <button onClick={this.handleClick}>next anecdote</button>
+        <Anecdote
+          anecdote={this.props.anecdotes[this.state.selected]}
+          votes={this.state.votes[this.state.selected]}
+          />
+        <div>
+          <button onClick={this.vote}>vote</button>
+          <button onClick={this.nextAnecdote}>next anecdote</button>
+        </div>
+        <h2>anecdote with most votes</h2>
+        <Anecdote
+          anecdote={this.props.anecdotes[mostVotedIndex]}
+          votes={this.state.votes[mostVotedIndex]}
+          />
       </div>
     )
   }
