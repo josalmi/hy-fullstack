@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 
 const Button = ({ name, onClick }) => (
@@ -6,7 +6,10 @@ const Button = ({ name, onClick }) => (
 )
 
 const Statistic = ({ name, value }) => (
-    <div>{name} {value}</div>
+    <tr>
+        <td>{name}</td>
+        <td>{value}</td>
+    </tr>
 )
 
 class Statistics extends React.PureComponent {
@@ -43,13 +46,15 @@ class Statistics extends React.PureComponent {
             return 'ei yhtään palautetta annettu'
         }
         return (
-            <Fragment>
-                {feedbackTypes.map(({ name }) => (
-                    <Statistic key={name} name={name} value={counters[name]} />
-                ))}
-                <Statistic name="keskiarvo" value={this.countAverage(total).toFixed(1)} />
-                <Statistic name="positiivisia" value={`${(this.countProportions(total).hyvä * 100).toFixed(1)} %`} />
-            </Fragment>
+            <table>
+                <tbody>
+                    {feedbackTypes.map(({ name }) => (
+                        <Statistic key={name} name={name} value={counters[name]} />
+                    ))}
+                    <Statistic name="keskiarvo" value={this.countAverage(total).toFixed(1)} />
+                    <Statistic name="positiivisia" value={`${(this.countProportions(total).hyvä * 100).toFixed(1)} %`} />
+                </tbody>
+            </table>
         )
     }
 }

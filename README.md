@@ -28,4 +28,4 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 1.8 unicafe osa3
 - [x] 1.9 unicafe osa4 (*)
 - [x] 1.10 unicafe osa5 (*)
-- [ ] 1.11 unicafe osa6
+- [x] 1.11 unicafe osa6
