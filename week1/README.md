@@ -6,4 +6,4 @@
 - [x] 1.2 lisää komponentteja
 - [x] 1.3 tieto olioissa
 - [x] 1.4 oliot taulukkoon
-- [ ] 1.5
+- [x] 1.5
