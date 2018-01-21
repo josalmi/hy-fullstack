@@ -44,6 +44,36 @@
   end note
   ```
 
-- [ ] 0.4 Uusi muistiinpano
+- [x] 0.4 Uusi muistiinpano
+
+  ![Sekvenssikaavio](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSBvdmVyIGtheXR0YWphCiAgSmF0a2V0YWFuIHRlaHTDpHbDpG4gMC4zIHRpbGFudGVlc3RhCmVuZCBub3RlCgoAMggtPnNlbGFpbjoKAFEFbGVmdCBvZiAADwYKICBLw6R5dHTDpGrDpCBzecO2dHTDpMOkIHZlcmtrb3NpdnVsbGEgbsOka3kAbAVsb21ha2tlZW4KICB0ZWtzdGlrZW50dMO2w7ZuIG11aXN0aWlucGFub24gamEgcGFpbmFhIFRhbGxldGEKICAtcGFpbmlrZXQAgSAMAIEbBi0-cGFsdmVsaW46IFBPU1QgZnVsbHN0YWNrLWV4YW1wbGVhcHAuaGVyb2t1YXBwLmNvbS9ub3RlcwCBSw4APQgKICBQAEkHIHNhYSBweXlubgCBHwZrYW5hIGsAgW4KbgogAIFyCW3DpACBOBAibm90ZSIga2VudMOkc3PDpC4AUAxraXJqb2l0dGFhAIFwD3RhbHQAgiIGZXNpbWVya2lrc2kgdGlldG9rYW50YWFuLgCDJQoAgXMIAIMlCSBzdGF0dXMgMzAyLCBsb2NhdGlvbjoAgWoqAINXF1N1b3JpdACEMRZhcGFodHVtYWtldGp1IGFsdXN0YS4KICBEYXRhLmpzb24ga3V0c3VuIHZhc3RhdWtzZXNzYSBvbiBueXQganV1cmkgbGlzw6R0dHkKIACDfw0Agm0HLCBqYSBzZSBuw6R5dGUAhGMFbgCCfAxsbGUAhTgJ&s=napkin)
+
+  ```
+  note over kayttaja
+    Jatketaan tehtävän 0.3 tilanteesta
+  end note
+
+  kayttaja->selain:
+  note left of selain
+    Käyttäjä syöttää verkkosivulla näkyvän lomakkeen
+    tekstikenttöön muistiinpanon ja painaa Talleta
+    -painiketta
+  end note
+  selain->palvelin: POST fullstack-exampleapp.herokuapp.com/notes
+  note left of palvelin
+    Palvelin saa pyynnön mukana käyttäjän
+    syöttämän muistiinpanon "note" kentässä.
+    Palvelin kirjoittaa muistiinpanon talteen
+    esimerkiksi tietokantaan.
+  end note
+  palvelin->selain: status 302, location: fullstack-exampleapp.herokuapp.com/notes
+
+  note left of selain
+    Suoritetaan tehtävän 0.3 tapahtumaketju alusta.
+    Data.json kutsun vastauksessa on nyt juuri lisätty
+    muistiinpano mukana, ja se näytetään käyttäjälle
+  end note
+  ```
+
 - [ ] 0.5 Single page app
 - [ ] 0.6 Uusi muistiinpano SPA:ssa
