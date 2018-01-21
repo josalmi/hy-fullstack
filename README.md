@@ -13,7 +13,7 @@ Course material: <https://fullstack-hy.github.io/>
 
 ## Week 1
 
-### Part 1 ([solution](week1/e1-5/))
+### Part 1 ([solution](week1/e01-05/))
 
 - [x] 1.1 jako komponenteiksi
 - [x] 1.2 lisää komponentteja
@@ -21,7 +21,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 1.4 oliot taulukkoon
 - [x] 1.5
 
-### Unicafe ([solution](week1/e6-11/))
+### Unicafe ([solution](week1/e06-11/))
 
 - [x] 1.6 unicafe osa1
 - [x] 1.7 unicafe osa2
