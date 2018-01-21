@@ -5,11 +5,15 @@ const Otsikko = ({ kurssi }) => (
     <h1>{kurssi}</h1>
 )
 
+const Osa = ({ osa, tehtavia }) => (
+    <p>{osa} {tehtavia}</p>
+)
+
 const Sisalto = ({ osa1, tehtavia1, osa2, tehtavia2, osa3, tehtavia3}) => (
     <Fragment>
-        <p>{osa1} {tehtavia1}</p>
-        <p>{osa2} {tehtavia2}</p>
-        <p>{osa3} {tehtavia3}</p>
+        <Osa osa={osa1} tehtavia={tehtavia1} />
+        <Osa osa={osa2} tehtavia={tehtavia2} />
+        <Osa osa={osa3} tehtavia={tehtavia3} />
     </Fragment>
 )
 
