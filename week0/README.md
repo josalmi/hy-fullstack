@@ -75,5 +75,6 @@
   end note
   ```
 
-- [ ] 0.5 Single page app
+- [x] 0.5 Single page app  
+  - Tehtävän 0.5 sekvenssikaavio on lähes identtinen tehtävän 0.3 sekvenssikaavion kanssa. Ainoat erot kaaviossa ovat polku johon käyttäjä navigoi (~~`/notes`~~ -> `/spa`) sekä ladattava JS-tiedosto (~~`main.js`~~ -> `spa.js`).
 - [ ] 0.6 Uusi muistiinpano SPA:ssa
