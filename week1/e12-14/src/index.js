@@ -2,17 +2,19 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      selected: 0
-    }
+  state = {
+    selected: 0
+  }
+
+  handleClick = () => {
+    this.setState({ selected: Math.floor(Math.random()*anecdotes.length) })
   }
 
   render() {
     return (
       <div>
-        {this.props.anecdotes[this.state.selected]}
+        <div>{this.props.anecdotes[this.state.selected]}</div>
+        <button onClick={this.handleClick}>next anecdote</button>
       </div>
     )
   }
