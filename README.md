@@ -20,3 +20,12 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 1.3 tieto olioissa
 - [x] 1.4 oliot taulukkoon
 - [x] 1.5
+
+### Unicafe ([solution](week1/e6-11/))
+
+- [ ] 1.6 unicafe osa1
+- [ ] 1.7 unicafe osa2
+- [ ] 1.8 unicafe osa3
+- [ ] 1.9 unicafe osa4 (*)
+- [ ] 1.10 unicafe osa5 (*)
+- [ ] 1.11 unicafe osa6
