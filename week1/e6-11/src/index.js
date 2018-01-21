@@ -17,8 +17,7 @@ class Statistics extends React.PureComponent {
         , 0)
     }
 
-    countAverage = () => {
-        const total = this.countTotal()
+    countAverage = (total) => {
         if (total === 0) {
             return 0
         }
@@ -30,8 +29,7 @@ class Statistics extends React.PureComponent {
         return weightedSum / total
     }
 
-    countProportions = () => {
-        const total = this.countTotal()
+    countProportions = (total) => {
         return this.props.feedbackTypes.reduce((proportions, { name }) => ({
             ...proportions,
             [name]: this.props.counters[name] / total || 0
@@ -39,14 +37,18 @@ class Statistics extends React.PureComponent {
     }
 
     render() {
-        const { counters, feedbackTypes } = this.props;
+        const { counters, feedbackTypes } = this.props
+        const total = this.countTotal()
+        if (total === 0) {
+            return 'ei yhtään palautetta annettu'
+        }
         return (
             <Fragment>
                 {feedbackTypes.map(({ name }) => (
                     <Statistic key={name} name={name} value={counters[name]} />
                 ))}
-                <Statistic name="keskiarvo" value={this.countAverage().toFixed(1)} />
-                <Statistic name="positiivisia" value={`${(this.countProportions().hyvä * 100).toFixed(1)} %`} />
+                <Statistic name="keskiarvo" value={this.countAverage(total).toFixed(1)} />
+                <Statistic name="positiivisia" value={`${(this.countProportions(total).hyvä * 100).toFixed(1)} %`} />
             </Fragment>
         )
     }
