@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-const Counter = ({ onIncrement }) => (
-    <button type="button" onClick={onIncrement}>+</button>
+const Counter = ({ name, onIncrement }) => (
+    <button name={name} onClick={onIncrement}>{name}</button>
 )
 
 class App extends Component {
 
-    state = {
-        counter: 0
-    }
+    static FEEDBACK_TYPES = ['hyvä', 'neutraali', 'huono']
 
-    handleIncrement = () => (
-        this.setState((prevState) => ({ counter: prevState.counter + 1 }))
+    state = App.FEEDBACK_TYPES.reduce((state, type) => ({
+        ...state,
+        [type]: 0
+    }), {});
+
+    handleIncrement = ({ target: { name }}) => (
+        this.setState((prevState) => ({ [name]: prevState[name] + 1 }))
     )
 
     render() {
         return (
             <div>
-                <Counter onIncrement={this.handleIncrement} />
-                {this.state.counter}
+                <h1>anna palautetta</h1>
+                {App.FEEDBACK_TYPES.map(type => (
+                    <Counter name={type} onIncrement={this.handleIncrement} />
+                ))}
+                <h1>statistiikka</h1>
+                {App.FEEDBACK_TYPES.map(type => (
+                    <div>{type} {this.state[type]}</div>
+                ))}
             </div>
         )
     }
