@@ -1,9 +1,0 @@
-# Week 1
-
-## Part 1 ([solution](e1-5))
-
-- [x] 1.1 jako komponenteiksi
-- [x] 1.2 lisää komponentteja
-- [x] 1.3 tieto olioissa
-- [x] 1.4 oliot taulukkoon
-- [x] 1.5
