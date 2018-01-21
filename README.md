@@ -29,3 +29,9 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 1.9 unicafe osa4 (*)
 - [x] 1.10 unicafe osa5 (*)
 - [x] 1.11 unicafe osa6
+
+### Anecdotes ([solution](week1/e12-14/))
+
+- [ ] 1.12 anekdootit osa1 (*)
+- [ ] 1.13 anekdootit osa2 (*)
+- [ ] 1.14 anekdootit osa3 (*)
