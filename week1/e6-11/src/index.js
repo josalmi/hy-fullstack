@@ -63,11 +63,11 @@ class App extends Component {
             <div>
                 <h1>anna palautetta</h1>
                 {App.FEEDBACK_TYPES.map(({ name }) => (
-                    <Counter name={name} onIncrement={this.handleIncrement} />
+                    <Counter key={name} name={name} onIncrement={this.handleIncrement} />
                 ))}
                 <h1>statistiikka</h1>
                 {App.FEEDBACK_TYPES.map(({ name }) => (
-                    <div>{name} {this.state[name]}</div>
+                    <div key={name}>{name} {this.state[name]}</div>
                 ))}
                 <div>keskiarvo: {this.countAverage().toFixed(1)}</div>
                 <div>positiivisia: {(this.countProportions().hyvä * 100).toFixed(1)} %</div>
