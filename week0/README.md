@@ -77,4 +77,31 @@
 
 - [x] 0.5 Single page app  
   - Tehtävän 0.5 sekvenssikaavio on lähes identtinen tehtävän 0.3 sekvenssikaavion kanssa. Ainoat erot kaaviossa ovat polku johon käyttäjä navigoi (~~`/notes`~~ -> `/spa`) sekä ladattava JS-tiedosto (~~`main.js`~~ -> `spa.js`).
-- [ ] 0.6 Uusi muistiinpano SPA:ssa
+- [x] 0.6 Uusi muistiinpano SPA:ssa
+
+  ![Sekvenssikaavio](https://www.websequencediagrams.com/cgi-bin/cdraw?lz=bm90ZSBvdmVyIGtheXR0YWphCiAgSmF0a2V0YWFuIHRlaHTDpHbDpG4gMC41IHRpbGFudGVlc3RhCmVuZCBub3RlCgoAMggtPnNlbGFpbjoKAFEFbGVmdCBvZiAADwYKICBLw6R5dHTDpGrDpCBzecO2dHTDpMOkIHZlcmtrb3NpdnVsbGEgbsOka3kAbAVsb21ha2tlZW4KICB0ZWtzdGlrZW50dMO2w7ZuIG11aXN0aWlucGFub24gamEgcGFpbmFhIFRhbGxldGEKICAtcGFpbmlrZXR0YS4KCiAgUwCBFwUgbGlzAHEFdAAkBWV0dGF2YQA_EGxpcwAaBQogIChvcHRpbWlzdGljIHVwZGF0ZSkgagCBIQUAgUYFw6Qgc2VuIGsAgVAKbGxlLgCCEQsAggwGLT5wYWx2ZWxpbjogUE9TVCBmdWxsc3RhY2stZXhhbXBsZWFwcC5oZXJva3VhcHAuY29tL25ld19ub3RlX3NwYQCCQw4ARAgKICBQAFAHIHNhYSBweXlubgCCFwZrYW5hAIEKDG4KIACCagltw6QAgjAQImNvbnRlbnQiIGtlbnTDpHNzw6QuAFMMa2lyam9pdHRhYQCCaw90YWx0AIMdBmVzaW1lcmtpa3NpIHRpZXRva2FudGFhbgCCAwsAgX0IAIQgCSBzdGF0dXMgMjAxLCBDcmVhdGVk&s=napkin)
+
+  ```
+  note over kayttaja
+    Jatketaan tehtävän 0.5 tilanteesta
+  end note
+
+  kayttaja->selain:
+  note left of selain
+    Käyttäjä syöttää verkkosivulla näkyvän lomakkeen
+    tekstikenttöön muistiinpanon ja painaa Talleta
+    -painiketta.
+
+    Selain lisää talletettavan muistiinpanon listalle
+    (optimistic update) ja näyttää sen käyttäjälle.
+  end note
+
+  selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note_spa
+  note left of palvelin
+    Palvelin saa pyynnön mukana käyttäjän
+    syöttämän muistiinpanon "content" kentässä.
+    Palvelin kirjoittaa muistiinpanon talteen
+    esimerkiksi tietokantaan.
+  end note
+  palvelin->selain: status 201, Created
+  ```
