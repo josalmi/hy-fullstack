@@ -16,7 +16,7 @@ const Sisalto = ({ osat }) => (
 )
 
 const Yhteensa = ({ osat }) => (
-    <p>yhteensä {osat.map(osa => osa.tehtavia).reduce( (p, n) => p + n )} tehtävää</p>
+    <p>yhteensä {osat.map(osa => osa.tehtavia).reduce((p, n) => p + n)} tehtävää</p>
 )
 
 const App = () => {
@@ -48,6 +48,6 @@ const App = () => {
 }
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+    <App />,
+    document.getElementById('root')
 )
