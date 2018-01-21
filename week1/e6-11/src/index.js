@@ -50,6 +50,14 @@ class App extends Component {
         return weightedSum / total
     }
 
+    countProportions = () => {
+        const total = this.countTotal()
+        return App.FEEDBACK_TYPES.reduce((proportions, { name }) => ({
+            ...proportions,
+            [name]: this.state[name] / total || 0
+        }), {})
+    }
+
     render() {
         return (
             <div>
@@ -62,6 +70,7 @@ class App extends Component {
                     <div>{name} {this.state[name]}</div>
                 ))}
                 <div>keskiarvo: {this.countAverage().toFixed(1)}</div>
+                <div>positiivisia: {(this.countProportions().hyvä * 100).toFixed(1)} %</div>
             </div>
         )
     }

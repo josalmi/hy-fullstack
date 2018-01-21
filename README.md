@@ -24,7 +24,7 @@ Course material: <https://fullstack-hy.github.io/>
 ### Unicafe ([solution](week1/e6-11/))
 
 - [x] 1.6 unicafe osa1
-- [ ] 1.7 unicafe osa2
+- [x] 1.7 unicafe osa2
 - [ ] 1.8 unicafe osa3
 - [ ] 1.9 unicafe osa4 (*)
 - [ ] 1.10 unicafe osa5 (*)
