@@ -5,5 +5,5 @@
 - [x] 1.1 jako komponenteiksi
 - [x] 1.2 lisää komponentteja
 - [x] 1.3 tieto olioissa
-- [ ] 1.4 oliot taulukkoon
+- [x] 1.4 oliot taulukkoon
 - [ ] 1.5
