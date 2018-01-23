@@ -4,29 +4,29 @@ Course material: <https://fullstack-hy.github.io/>
 
 ## Week 0
 
-- [x] 0.1 HTML ja CSS
-- [x] 0.2 HTML:n lomakkeet
-- [x] 0.3 Muistiinpanojen sivu ([solution](week0#03-muistiinpanojen-sivu))
-- [x] 0.4 Uusi muistiinpano ([solution](week0#04-uusi-muistiinpano))
-- [x] 0.5 Single page app ([solution](week0#05-single-page-app))
-- [x] 0.6 Uusi muistiinpano SPA:ssa ([solution](week0#06-uusi-muistiinpano-spassa))
+- [x] 0.01 HTML ja CSS
+- [x] 0.02 HTML:n lomakkeet
+- [x] 0.03 Muistiinpanojen sivu ([solution](week0#03-muistiinpanojen-sivu))
+- [x] 0.04 Uusi muistiinpano ([solution](week0#04-uusi-muistiinpano))
+- [x] 0.05 Single page app ([solution](week0#05-single-page-app))
+- [x] 0.06 Uusi muistiinpano SPA:ssa ([solution](week0#06-uusi-muistiinpano-spassa))
 
 ## Week 1
 
 ### Part 1 ([solution](week1/e01-05/))
 
-- [x] 1.1 jako komponenteiksi
-- [x] 1.2 lisää komponentteja
-- [x] 1.3 tieto olioissa
-- [x] 1.4 oliot taulukkoon
-- [x] 1.5
+- [x] 1.01 jako komponenteiksi
+- [x] 1.02 lisää komponentteja
+- [x] 1.03 tieto olioissa
+- [x] 1.04 oliot taulukkoon
+- [x] 1.05
 
 ### Unicafe ([solution](week1/e06-11/))
 
-- [x] 1.6 unicafe osa1
-- [x] 1.7 unicafe osa2
-- [x] 1.8 unicafe osa3
-- [x] 1.9 unicafe osa4 (*)
+- [x] 1.06 unicafe osa1
+- [x] 1.07 unicafe osa2
+- [x] 1.08 unicafe osa3
+- [x] 1.09 unicafe osa4 (*)
 - [x] 1.10 unicafe osa5 (*)
 - [x] 1.11 unicafe osa6
 
