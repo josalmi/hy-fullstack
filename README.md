@@ -41,8 +41,8 @@ Course material: <https://fullstack-hy.github.io/>
 ### Kokoelmat ([solution](week2/e01-05/))
 
 - [x] 2.01 kurssien sisältö
-- [ ] 2.02 tehtävien määrä
-- [ ] 2.03 reduce (*)
+- [x] 2.02 tehtävien määrä
+- [x] 2.03 reduce (*)
 - [ ] 2.04 monta kurssia
 - [ ] 2.05 erillinen moduuli
 
