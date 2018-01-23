@@ -11,7 +11,7 @@ const Osa = ({ osa, tehtavia }) => (
 
 const Sisalto = ({ osat }) => (
     osat.map(osa => (
-        <Osa key={osa.nimi} osa={osa.nimi} tehtavia={osa.tehtavia} />
+        <Osa key={osa.id} osa={osa.nimi} tehtavia={osa.tehtavia} />
     ))
 )
 
@@ -33,24 +33,25 @@ const App = () => {
         osat: [
             {
                 nimi: 'Reactin perusteet',
-                tehtavia: 10
+                tehtavia: 10,
+                id: 1
             },
             {
                 nimi: 'Tiedonvälitys propseilla',
-                tehtavia: 7
+                tehtavia: 7,
+                id: 2
             },
             {
                 nimi: 'Komponenttien tila',
-                tehtavia: 14
+                tehtavia: 14,
+                id: 3
             }
         ]
     }
 
     return (
         <div>
-            <Otsikko kurssi={kurssi.nimi} />
-            <Sisalto osat={kurssi.osat} />
-            <Yhteensa osat={kurssi.osat} />
+            <Kurssi kurssi={kurssi} />
         </div>
     )
 }
