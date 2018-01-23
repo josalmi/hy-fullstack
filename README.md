@@ -44,7 +44,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 2.02 tehtävien määrä
 - [x] 2.03 reduce (*)
 - [x] 2.04 monta kurssia
-- [ ] 2.05 erillinen moduuli
+- [x] 2.05 erillinen moduuli
 
 ### Phone book
 
