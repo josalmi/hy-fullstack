@@ -35,3 +35,33 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 1.12 anekdootit osa1 (*)
 - [x] 1.13 anekdootit osa2 (*)
 - [x] 1.14 anekdootit osa3 (*)
+
+## Week 2
+
+### Kokoelmat
+
+- [ ] 2.01 kurssien sisältö
+- [ ] 2.02 tehtävien määrä
+- [ ] 2.03 reduce (*)
+- [ ] 2.04 monta kurssia
+- [ ] 2.05 erillinen moduuli
+
+### Phone book
+
+- [ ] 2.06 puhelinluettelo osa 1
+- [ ] 2.07 puhelinluettelo osa 2
+- [ ] 2.08 puhelinluettelo osa 3
+- [ ] 2.09 puhelinluettelo osa 4 (*)
+- [ ] 2.10 puhelinluettelo osa 5
+- [ ] 2.11 puhelinluettelo osa 6
+- [ ] 2.14 puhelinluettelo osa 7
+- [ ] 2.15 puhelinluettelo osa 8
+- [ ] 2.16 puhelinluettelo osa 9
+- [ ] 2.17 puhelinluettelo osa 10 (*)
+- [ ] 2.18 puhelinluettelo osa 11
+- [ ] 2.19 puhelinluettelo osa 12 (*)
+
+### Countries
+
+- [ ] 2.12 maiden tiedot (*)
+- [ ] 2.13 maiden tiedot klikkaamalla (*)
