@@ -1,19 +1,20 @@
 import React from 'react'
+import axios from 'axios'
 import Filter from './Filter'
 import PersonForm from './PersonForm'
 import PhoneBook from './PhoneBook'
 
 class App extends React.Component {
     state = {
-        persons: [
-            { name: 'Arto Hellas', number: '040-123456' },
-            { name: 'Martti Tienari', number: '040-123456' },
-            { name: 'Arto Järvinen', number: '040-123456' },
-            { name: 'Lea Kutvonen', number: '040-123456' }
-        ],
+        persons: [],
         newName: '',
         newNumber: '',
         filter: ''
+    }
+
+    async componentWillMount() {
+        const { data: persons } = await axios.get('http://localhost:3001/persons')
+        this.setState({ persons })
     }
 
     handleChange = (e) => {
