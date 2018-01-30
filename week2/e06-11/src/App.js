@@ -1,4 +1,7 @@
-import React from 'react';
+import React from 'react'
+import Filter from './Filter'
+import PersonForm from './PersonForm'
+import PhoneBook from './PhoneBook'
 
 class App extends React.Component {
     state = {
@@ -34,39 +37,14 @@ class App extends React.Component {
     }
 
     render() {
+        const filteredPersons = this.state.persons.filter(person => person.name.toLowerCase().includes(this.state.filter.toLowerCase()))
         return (
             <div>
                 <h2>Puhelinluettelo</h2>
-                <div>
-                    rajaa näytettäviä <input name="filter" type="search" onChange={this.handleChange} value={this.state.filter} />
-                </div>
-                <h2>Lisää uusi</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        nimi: <input name="newName" onChange={this.handleChange} value={this.state.newName} />
-                    </div>
-                    <div>
-                        numero: <input name="newNumber" onChange={this.handleChange} value={this.state.newNumber} />
-                    </div>
-                    <div>
-                        <button type="submit">lisää</button>
-                    </div>
-                </form>
-                <h2>Numerot</h2>
-                <table>
-                    <tbody>
-                        {this.state.persons
-                            .filter(person => person.name.toLowerCase().includes(this.state.filter.toLowerCase()))
-                            .map(person => (
-                                <tr key={person.name}>
-                                    <td>{person.name}</td>
-                                    <td>{person.number}</td>
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
-      </div>
+                <Filter name="filter" values={this.state} onChange={this.handleChange} />
+                <PersonForm  values={this.state} onChange={this.handleChange} onSubmit={this.handleSubmit} />
+                <PhoneBook persons={filteredPersons} />
+            </div>
         )
     }
 }
