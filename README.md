@@ -48,7 +48,7 @@ Course material: <https://fullstack-hy.github.io/>
 
 ### Phone book ([solution](week2/e06-e11)
 
-- [ ] 2.06 puhelinluettelo osa 1
+- [x] 2.06 puhelinluettelo osa 1
 - [ ] 2.07 puhelinluettelo osa 2
 - [ ] 2.08 puhelinluettelo osa 3
 - [ ] 2.09 puhelinluettelo osa 4 (*)
