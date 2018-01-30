@@ -14,6 +14,9 @@ class App extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        if (this.state.persons.some(person => person.name === this.state.newName)) {
+            return
+        }
         this.setState(prevState => ({
             ...prevState,
             newName: '',
