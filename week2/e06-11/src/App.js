@@ -1,12 +1,8 @@
 import React from 'react'
-import axios from 'axios'
+import personService from './personService'
 import Filter from './Filter'
 import PersonForm from './PersonForm'
 import PhoneBook from './PhoneBook'
-
-const api = axios.create({
-    baseURL: 'http://localhost:3001'
-})
 
 class App extends React.Component {
     state = {
@@ -17,7 +13,7 @@ class App extends React.Component {
     }
 
     async componentWillMount() {
-        const { data: persons } = await api.get('/persons')
+        const persons = await personService.getAll()
         this.setState({ persons })
     }
 
@@ -30,14 +26,14 @@ class App extends React.Component {
         if (this.state.persons.some(person => person.name === this.state.newName)) {
             return
         }
-        const { data } = await api.post('/persons', { name: this.state.newName, number: this.state.newNumber })
+        const newPerson = await personService.create({ name: this.state.newName, number: this.state.newNumber })
         this.setState(prevState => ({
             ...prevState,
             newName: '',
             newNumber: '',
             persons: [
                 ...prevState.persons,
-                data
+                newPerson
             ]
         }))
     }

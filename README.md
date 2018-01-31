@@ -55,7 +55,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 2.10 puhelinluettelo osa 5
 - [x] 2.11 puhelinluettelo osa 6
 - [x] 2.14 puhelinluettelo osa 7
-- [ ] 2.15 puhelinluettelo osa 8
+- [x] 2.15 puhelinluettelo osa 8
 - [ ] 2.16 puhelinluettelo osa 9
 - [ ] 2.17 puhelinluettelo osa 10 (*)
 - [ ] 2.18 puhelinluettelo osa 11
