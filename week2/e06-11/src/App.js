@@ -38,6 +38,17 @@ class App extends React.Component {
         }))
     }
 
+    handleDelete = async ({ target: { value } }) => {
+        const id = parseInt(value)
+        if (window.confirm(`poistetaanko ${this.state.persons.find(person => person.id === id).name}`)) {
+            const result = await personService.remove(id)
+            this.setState(prevState => ({
+                ...prevState,
+                persons: prevState.persons.filter(person => person.id !== id)
+            }))
+        }
+    }
+
     render() {
         const filteredPersons = this.state.persons.filter(person => person.name.toLowerCase().includes(this.state.filter.toLowerCase()))
         return (
@@ -45,7 +56,7 @@ class App extends React.Component {
                 <h2>Puhelinluettelo</h2>
                 <Filter name="filter" values={this.state} onChange={this.handleChange} />
                 <PersonForm  values={this.state} onChange={this.handleChange} onSubmit={this.handleSubmit} />
-                <PhoneBook persons={filteredPersons} />
+                <PhoneBook persons={filteredPersons} onDelete={this.handleDelete} />
             </div>
         )
     }
