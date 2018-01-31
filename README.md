@@ -63,5 +63,5 @@ Course material: <https://fullstack-hy.github.io/>
 
 ### Countries ([solution](week2/e12-e13))
 
-- [ ] 2.12 maiden tiedot (*)
+- [x] 2.12 maiden tiedot (*)
 - [ ] 2.13 maiden tiedot klikkaamalla (*)
