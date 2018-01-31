@@ -28,7 +28,15 @@ class App extends React.Component {
             ? 'too many matches, specify another filter'
             : countriesToShow.length > 1
             ? countriesToShow.map(country => (
-                <div key={country.name}>{country.name}</div>
+                <button
+                  key={country.name}
+                  name="filter"
+                  value={country.name}
+                  onClick={this.handleChange}
+                  style={{ border: '0', display: 'block' }}
+                >
+                  {country.name}
+                </button>
               ))
             : countriesToShow.length === 1
             ? countriesToShow.map(country => (
