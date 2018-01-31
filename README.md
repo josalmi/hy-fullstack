@@ -59,7 +59,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 2.16 puhelinluettelo osa 9
 - [x] 2.17 puhelinluettelo osa 10 (*)
 - [x] 2.18 puhelinluettelo osa 11
-- [ ] 2.19 puhelinluettelo osa 12 (*)
+- [x] 2.19 puhelinluettelo osa 12 (*)
 
 ### Countries ([solution](week2/e12-e13))
 

@@ -39,7 +39,16 @@ class App extends React.Component {
             }))
             this.showNotification(`lisättiin ${newPerson.name}`)
         } else if (window.confirm(`${existingPerson.name} on jo luettelossa, korvataanko vanha numero uudella?`)) {
-            const updatedPerson = await personService.update(existingPerson.id, { number: this.state.newNumber })
+            let updatedPerson;
+            try {
+                updatedPerson = await personService.update(existingPerson.id, { number: this.state.newNumber })
+            } catch (e) {
+                if (e.response.status !== 404) {
+                    throw e
+                }
+                // fallback to creating new person
+                updatedPerson = await personService.create({ name: this.state.newName, number: this.state.newNumber })
+            }
             this.setState(prevState => ({
                 newName: '',
                 newNumber: '',
@@ -57,7 +66,13 @@ class App extends React.Component {
         const id = parseInt(value, 10)
         const personToDelete = this.state.persons.find(person => person.id === id)
         if (window.confirm(`poistetaanko ${personToDelete.name}`)) {
-            await personService.remove(id)
+            try {
+                await personService.remove(id)
+            } catch (e) {
+                if (e.response.status !== 404) {
+                    throw e
+                }
+            }
             this.setState(prevState => ({
                 persons: prevState.persons.filter(person => person !== personToDelete)
             }))
