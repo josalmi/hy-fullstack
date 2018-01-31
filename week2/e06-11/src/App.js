@@ -4,6 +4,10 @@ import Filter from './Filter'
 import PersonForm from './PersonForm'
 import PhoneBook from './PhoneBook'
 
+const api = axios.create({
+    baseURL: 'http://localhost:3001'
+})
+
 class App extends React.Component {
     state = {
         persons: [],
@@ -13,7 +17,7 @@ class App extends React.Component {
     }
 
     async componentWillMount() {
-        const { data: persons } = await axios.get('http://localhost:3001/persons')
+        const { data: persons } = await api.get('/persons')
         this.setState({ persons })
     }
 
@@ -21,18 +25,19 @@ class App extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault()
         if (this.state.persons.some(person => person.name === this.state.newName)) {
             return
         }
+        const { data } = await api.post('/persons', { name: this.state.newName, number: this.state.newNumber })
         this.setState(prevState => ({
             ...prevState,
             newName: '',
             newNumber: '',
             persons: [
                 ...prevState.persons,
-                { name: prevState.newName, number: prevState.newNumber }
+                data
             ]
         }))
     }
