@@ -65,3 +65,32 @@ Course material: <https://fullstack-hy.github.io/>
 
 - [x] 2.12 maiden tiedot (*)
 - [x] 2.13 maiden tiedot klikkaamalla (*)
+
+## Week 3
+
+### Phone book ([solution](week3/e01-e22/))
+
+- [ ] 3.01 puhelinluettelon backend osa 1
+- [ ] 3.02 puhelinluettelon backend osa 2
+- [ ] 3.03 puhelinluettelon backend osa 3
+- [ ] 3.04 puhelinluettelon backend osa 4
+- [ ] 3.05 puhelinluettelon backend osa 5
+- [ ] 3.06 puhelinluettelon backend osa 6 (*)
+- [ ] 3.07 puhelinluettelon backend osa 7
+- [ ] 3.08 puhelinluettelon backend osa 8 (*)
+- [ ] 3.09 puhelinluettelon backend osa 9
+- [ ] 3.09 puhelinluettelon backend osa 9
+- [ ] 3.10 puhelinluettelon backend osa 10
+- [ ] 3.10 puhelinluettelon backend osa 10
+- [ ] 3.11 puhelinluettelo full stack
+- [ ] 3.12 tietokanta komentoriviltä
+- [ ] 3.13 puhelinluettelo ja tietokanta, osa 1
+- [ ] 3.14 puhelinluettelo ja tietokanta, osa 2 (*)
+- [ ] 3.15 puhelinluettelo ja tietokanta, osa 3
+- [ ] 3.16 puhelinluettelo ja tietokanta, osa 4
+- [ ] 3.17 puhelinluettelo ja tietokanta, osa 5 (*)
+- [ ] 3.18 puhelinluettelo ja tietokanta, osa 6 (*)
+- [ ] 3.19 puhelinluettelo ja tietokanta, osa 7 (*)
+- [ ] 3.20 tietokantaa käyttävä versio herokuun
+- [ ] 3.21 eriytetty sovelluskehitys- ja tuotantotietokanta (*)
+- [ ] 3.22 lint-konfiguraatio

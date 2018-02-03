@@ -1,0 +1,3 @@
+[submodule "week3/e01-e22"]
+	path = week3/e01-e22
+	url = git@github.com:josalmi/hy-fullstack-phonebook.git
