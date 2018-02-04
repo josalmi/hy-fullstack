@@ -70,7 +70,7 @@ Course material: <https://fullstack-hy.github.io/>
 
 ### Phone book ([solution](week3/e01-e22/))
 
-- [ ] 3.01 puhelinluettelon backend osa 1
+- [x] 3.01 puhelinluettelon backend osa 1
 - [ ] 3.02 puhelinluettelon backend osa 2
 - [ ] 3.03 puhelinluettelon backend osa 3
 - [ ] 3.04 puhelinluettelon backend osa 4
