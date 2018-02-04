@@ -77,7 +77,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 3.05 puhelinluettelon backend osa 5
 - [x] 3.06 puhelinluettelon backend osa 6 (*)
 - [x] 3.07 puhelinluettelon backend osa 7
-- [ ] 3.08 puhelinluettelon backend osa 8 (*)
+- [x] 3.08 puhelinluettelon backend osa 8 (*)
 - [ ] 3.09 puhelinluettelon backend osa 9
 - [ ] 3.09 puhelinluettelon backend osa 9
 - [ ] 3.10 puhelinluettelon backend osa 10
