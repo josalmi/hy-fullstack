@@ -68,7 +68,7 @@ Course material: <https://fullstack-hy.github.io/>
 
 ## Week 3
 
-### Phone book ([solution](week3/e01-e22/))
+### Phone book ([solution](https://github.com/josalmi/hy-fullstack-phonebook) | [live](https://powerful-oasis-17796.herokuapp.com/))
 
 - [x] 3.01 puhelinluettelon backend osa 1
 - [x] 3.02 puhelinluettelon backend osa 2
@@ -79,7 +79,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 3.07 puhelinluettelon backend osa 7
 - [x] 3.08 puhelinluettelon backend osa 8 (*)
 - [x] 3.09 puhelinluettelon backend osa 9
-- [ ] 3.10 puhelinluettelon backend osa 10
+- [x] 3.10 puhelinluettelon backend osa 10
 - [ ] 3.11 puhelinluettelo full stack
 - [ ] 3.12 tietokanta komentoriviltä
 - [ ] 3.13 puhelinluettelo ja tietokanta, osa 1
