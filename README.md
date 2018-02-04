@@ -80,7 +80,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 3.08 puhelinluettelon backend osa 8 (*)
 - [x] 3.09 puhelinluettelon backend osa 9
 - [x] 3.10 puhelinluettelon backend osa 10
-- [ ] 3.11 puhelinluettelo full stack
+- [x] 3.11 puhelinluettelo full stack
 - [ ] 3.12 tietokanta komentoriviltä
 - [ ] 3.13 puhelinluettelo ja tietokanta, osa 1
 - [ ] 3.14 puhelinluettelo ja tietokanta, osa 2 (*)
