@@ -81,14 +81,14 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 3.09 puhelinluettelon backend osa 9
 - [x] 3.10 puhelinluettelon backend osa 10
 - [x] 3.11 puhelinluettelo full stack
-- [ ] 3.12 tietokanta komentoriviltä
-- [ ] 3.13 puhelinluettelo ja tietokanta, osa 1
-- [ ] 3.14 puhelinluettelo ja tietokanta, osa 2 (*)
-- [ ] 3.15 puhelinluettelo ja tietokanta, osa 3
-- [ ] 3.16 puhelinluettelo ja tietokanta, osa 4
-- [ ] 3.17 puhelinluettelo ja tietokanta, osa 5 (*)
-- [ ] 3.18 puhelinluettelo ja tietokanta, osa 6 (*)
-- [ ] 3.19 puhelinluettelo ja tietokanta, osa 7 (*)
-- [ ] 3.20 tietokantaa käyttävä versio herokuun
-- [ ] 3.21 eriytetty sovelluskehitys- ja tuotantotietokanta (*)
-- [ ] 3.22 lint-konfiguraatio
+- [x] 3.12 tietokanta komentoriviltä
+- [x] 3.13 puhelinluettelo ja tietokanta, osa 1
+- [x] 3.14 puhelinluettelo ja tietokanta, osa 2 (*)
+- [x] 3.15 puhelinluettelo ja tietokanta, osa 3
+- [x] 3.16 puhelinluettelo ja tietokanta, osa 4
+- [x] 3.17 puhelinluettelo ja tietokanta, osa 5 (*)
+- [x] 3.18 puhelinluettelo ja tietokanta, osa 6 (*)
+- [x] 3.19 puhelinluettelo ja tietokanta, osa 7 (*)
+- [x] 3.20 tietokantaa käyttävä versio herokuun
+- [x] 3.21 eriytetty sovelluskehitys- ja tuotantotietokanta (*)
+- [x] 3.22 lint-konfiguraatio
