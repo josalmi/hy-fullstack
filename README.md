@@ -46,7 +46,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 2.04 monta kurssia
 - [x] 2.05 erillinen moduuli
 
-### Phone book ([solution](week2/e06-e11))
+### Phone book ([solution](week2/e06-19))
 
 - [x] 2.06 puhelinluettelo osa 1
 - [x] 2.07 puhelinluettelo osa 2
@@ -61,7 +61,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 2.18 puhelinluettelo osa 11
 - [x] 2.19 puhelinluettelo osa 12 (*)
 
-### Countries ([solution](week2/e12-e13))
+### Countries ([solution](week2/e12-13))
 
 - [x] 2.12 maiden tiedot (*)
 - [x] 2.13 maiden tiedot klikkaamalla (*)
