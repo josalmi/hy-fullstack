@@ -12,8 +12,26 @@ const favoriteBlog = blogs =>
     null
   );
 
+const mostBlogs = blogs => {
+  const authorBlogCounts = blogs.map(blog => blog.author).reduce(
+    (acc, author) => ({
+      ...acc,
+      [author]: (acc[author] || 0) + 1
+    }),
+    {}
+  );
+  return Object.keys(authorBlogCounts)
+    .map(author => ({ author, blogs: authorBlogCounts[author] }))
+    .reduce(
+      (best, current) =>
+        best === null || current.blogs > best.blogs ? current : best,
+      null
+    );
+};
+
 module.exports = {
   dummy,
   totalLikes,
-  favoriteBlog
+  favoriteBlog,
+  mostBlogs
 };
