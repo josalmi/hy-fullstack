@@ -1,21 +1,10 @@
 const http = require("http");
-const express = require("express");
-const app = express();
-const bodyParser = require("body-parser");
-const cors = require("cors");
+const app = require("./app");
 const mongoose = require("mongoose");
+const config = require("./config");
 
-const blogsRouter = require("./controllers/blogs");
+mongoose.connect(config.mongoUrl);
 
-app.use(cors());
-app.use(bodyParser.json());
-
-const mongoUrl = "mongodb://localhost/bloglist";
-mongoose.connect(mongoUrl);
-
-app.use("/api/blogs", blogsRouter);
-
-const PORT = 3006;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+const server = http.createServer(app).listen(config.port, () => {
+  console.log(`Server running on port ${config.port}`);
 });
