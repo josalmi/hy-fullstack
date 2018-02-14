@@ -19,7 +19,6 @@ app.use(bodyParser.json());
 
 const mongoUrl = "mongodb://localhost/bloglist";
 mongoose.connect(mongoUrl);
-mongoose.Promise = global.Promise;
 
 app.get("/api/blogs", (request, response) => {
   Blog.find({}).then(blogs => {

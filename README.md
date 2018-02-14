@@ -97,7 +97,7 @@ Course material: <https://fullstack-hy.github.io/>
 
 ### Blog ([solution](week4/))
 
-- [ ] 4.1 blogilista, osa 1
+- [x] 4.1 blogilista, osa 1
 - [ ] 4.2 blogilista, osa 2
 - [ ] 4.3 apufunktioita ja yksikkötestejä, osa 1
 - [ ] 4.4 apufunktioita ja yksikkötestejä, osa 2
