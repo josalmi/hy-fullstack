@@ -12,9 +12,9 @@ router.post(
   "/",
   celebrate({
     body: Joi.object({
-      title: Joi.string(),
+      title: Joi.string().required(),
       author: Joi.string(),
-      url: Joi.string(),
+      url: Joi.string().required(),
       likes: Joi.number()
         .integer()
         .min(0)

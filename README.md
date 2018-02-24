@@ -107,7 +107,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 4.8 blogilistan testit, osa 1
 - [x] 4.9 blogilistan testit, osa 2
 - [x] 4.10 blogilistan testit, osa 3 (*)
-- [ ] 4.11 blogilistan testit, osa 4 (*)
+- [x] 4.11 blogilistan testit, osa 4 (*)
 - [ ] 4.12 blogilistan laajennus, osa 1 (*)
 - [ ] 4.13 blogilistan laajennus, osa 2
 - [ ] 4.14 blogilistan laajennus, osa 3 (*)

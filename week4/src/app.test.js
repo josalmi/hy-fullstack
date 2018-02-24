@@ -89,4 +89,24 @@ describe("POST /api/blogs", () => {
       })
     );
   });
+
+  test("title is required", async () => {
+    await request
+      .post("/api/blogs")
+      .send({
+        ...blogGenerator(),
+        title: undefined
+      })
+      .expect(400);
+  });
+
+  test("url is required", async () => {
+    await request
+      .post("/api/blogs")
+      .send({
+        ...blogGenerator(),
+        url: undefined
+      })
+      .expect(400);
+  });
 });
