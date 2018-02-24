@@ -112,3 +112,15 @@ describe("POST /api/blogs", () => {
       .expect(400);
   });
 });
+
+describe("DELETE /api/blogs/:id", () => {
+  test("blog is removed", async () => {
+    const blogsBeforeRemove = await getBlogs();
+    const blogToRemove = blogsBeforeRemove[0];
+    await request.delete(`/api/blogs/${blogToRemove._id}`).expect(204);
+
+    const blogsAfterRemove = await getBlogs();
+    expect(blogsAfterRemove).toHaveLength(blogsBeforeRemove.length - 1);
+    expect(blogsAfterRemove).not.toContainEqual(blogToRemove);
+  });
+});

@@ -29,4 +29,19 @@ router.post(
   }
 );
 
+router.delete(
+  "/:id",
+  celebrate({
+    params: Joi.object({
+      id: Joi.string()
+        .length(24)
+        .hex(9)
+    })
+  }),
+  async (req, res) => {
+    await Blog.findByIdAndRemove(req.params.id);
+    res.sendStatus(204);
+  }
+);
+
 module.exports = router;
