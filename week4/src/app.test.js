@@ -22,8 +22,13 @@ const initialBlogs = [
   }
 ];
 
+const getBlogs = () => Blog.find({});
+
 beforeAll(async () => {
   await mongoose.connect(config.testMongoUrl);
+});
+
+beforeEach(async () => {
   await Blog.remove({});
   for (blog of initialBlogs) {
     await new Blog(blog).save();
@@ -53,36 +58,33 @@ describe("GET /api/blogs", () => {
 });
 
 describe("POST /api/blogs", () => {
-  let blogCounter = 0;
-  const blogGenerator = () => ({
-    title: `Hello world ${++blogCounter}`,
+  const blog = {
+    title: "Hello world",
     author: "Foo Bar",
     url: "http://example.com",
     likes: 3
-  });
+  };
 
   test("valid blog is added", async () => {
     await request
       .post("/api/blogs")
-      .send(blogGenerator())
+      .send(blog)
       .expect(201);
-    const response = await request.get("/api/blogs");
-
-    expect(response.body).toHaveLength(initialBlogs.length + 1);
-    expect(response.body).toContainEqual(expect.objectContaining(blog));
+    const blogs = await getBlogs();
+    expect(blogs).toHaveLength(initialBlogs.length + 1);
+    expect(blogs).toContainEqual(expect.objectContaining(blog));
   });
 
   test("likes defaults to 0", async () => {
-    const blog = {
-      ...blogGenerator(),
-      likes: undefined
-    };
     await request
       .post("/api/blogs")
-      .send(blog)
+      .send({
+        ...blog,
+        likes: undefined
+      })
       .expect(201);
-    const response = await request.get("/api/blogs");
-    expect(response.body).toContainEqual(
+    const blogs = await getBlogs();
+    expect(blogs).toContainEqual(
       expect.objectContaining({
         ...blog,
         likes: 0
@@ -94,7 +96,7 @@ describe("POST /api/blogs", () => {
     await request
       .post("/api/blogs")
       .send({
-        ...blogGenerator(),
+        ...blog,
         title: undefined
       })
       .expect(400);
@@ -104,7 +106,7 @@ describe("POST /api/blogs", () => {
     await request
       .post("/api/blogs")
       .send({
-        ...blogGenerator(),
+        ...blog,
         url: undefined
       })
       .expect(400);
