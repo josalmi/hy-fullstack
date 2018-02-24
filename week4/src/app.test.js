@@ -22,7 +22,7 @@ const initialBlogs = [
   }
 ];
 
-const getBlogs = () => Blog.find({});
+const getBlogs = (query = {}) => Blog.find(query).lean();
 
 beforeAll(async () => {
   await mongoose.connect(config.testMongoUrl);
@@ -110,6 +110,24 @@ describe("POST /api/blogs", () => {
         url: undefined
       })
       .expect(400);
+  });
+});
+
+describe("PUT /api/blogs/:id", () => {
+  test("likes is updated", async () => {
+    const [blog] = await getBlogs();
+    const blogUpdate = {
+      ...blog,
+      likes: 1337
+    };
+    const response = await request
+      .put(`/api/blogs/${blog._id}`)
+      .send(blogUpdate)
+      .expect(200);
+    expect(response.body).toEqual({
+      ...blogUpdate,
+      _id: blogUpdate._id.toString()
+    });
   });
 });
 

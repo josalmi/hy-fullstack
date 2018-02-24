@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "dotenv": "^5.0.0",
-    "jest": "^22.3.0",
+    "jest": "^22.4.2",
     "nodemon": "^1.14.12",
     "supertest": "^3.0.0"
   }
