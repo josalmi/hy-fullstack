@@ -3,9 +3,9 @@ const { celebrate, Joi } = require("celebrate");
 
 const { Blog } = require("../models");
 
-router.get("/", async (request, response) => {
+router.get("/", async (req, res) => {
   const blogs = await Blog.find({});
-  response.json(blogs);
+  res.json(blogs);
 });
 
 router.post(
@@ -21,11 +21,11 @@ router.post(
         .default(0)
     })
   }),
-  async (request, response) => {
-    const blog = new Blog(request.body);
+  async (req, res) => {
+    const blog = new Blog(req.body);
 
     const result = await blog.save();
-    response.status(201).json(result);
+    res.status(201).json(result);
   }
 );
 
