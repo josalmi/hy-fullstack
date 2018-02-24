@@ -53,21 +53,40 @@ describe("GET /api/blogs", () => {
 });
 
 describe("POST /api/blogs", () => {
-  const blog = {
-    title: "Hello world",
+  let blogCounter = 0;
+  const blogGenerator = () => ({
+    title: `Hello world ${++blogCounter}`,
     author: "Foo Bar",
     url: "http://example.com",
     likes: 3
-  };
+  });
 
   test("valid blog is added", async () => {
     await request
       .post("/api/blogs")
-      .send(blog)
+      .send(blogGenerator())
       .expect(201);
     const response = await request.get("/api/blogs");
 
     expect(response.body).toHaveLength(initialBlogs.length + 1);
     expect(response.body).toContainEqual(expect.objectContaining(blog));
+  });
+
+  test("likes defaults to 0", async () => {
+    const blog = {
+      ...blogGenerator(),
+      likes: undefined
+    };
+    await request
+      .post("/api/blogs")
+      .send(blog)
+      .expect(201);
+    const response = await request.get("/api/blogs");
+    expect(response.body).toContainEqual(
+      expect.objectContaining({
+        ...blog,
+        likes: 0
+      })
+    );
   });
 });
