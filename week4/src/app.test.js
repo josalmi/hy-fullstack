@@ -51,3 +51,23 @@ describe("GET /api/blogs", () => {
     }
   });
 });
+
+describe("POST /api/blogs", () => {
+  const blog = {
+    title: "Hello world",
+    author: "Foo Bar",
+    url: "http://example.com",
+    likes: 3
+  };
+
+  test("valid blog is added", async () => {
+    await request
+      .post("/api/blogs")
+      .send(blog)
+      .expect(201);
+    const response = await request.get("/api/blogs");
+
+    expect(response.body).toHaveLength(initialBlogs.length + 1);
+    expect(response.body).toContainEqual(expect.objectContaining(blog));
+  });
+});

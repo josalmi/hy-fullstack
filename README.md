@@ -105,7 +105,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 4.6 apufunktioita ja yksikkötestejä, osa 4 (*)
 - [x] 4.7 apufunktioita ja yksikkötestejä, osa 5 (*)
 - [x] 4.8 blogilistan testit, osa 1
-- [ ] 4.9 blogilistan testit, osa 2
+- [x] 4.9 blogilistan testit, osa 2
 - [ ] 4.10 blogilistan testit, osa 3 (*)
 - [ ] 4.11 blogilistan testit, osa 4 (*)
 - [ ] 4.12 blogilistan laajennus, osa 1 (*)
