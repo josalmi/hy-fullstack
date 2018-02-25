@@ -16,6 +16,11 @@ class App extends React.Component {
   };
 
   async componentDidMount() {
+    const loggedUserJSON = window.localStorage.getItem("user");
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON);
+      this.setState({ user });
+    }
     const blogs = await blogService.getAll();
     this.setState({ blogs });
   }
@@ -39,11 +44,17 @@ class App extends React.Component {
         user,
         loginForm: { username: "", password: "" }
       });
+      window.localStorage.setItem("user", JSON.stringify(user));
     } catch (e) {
       this.setState({
         loginError: "käyttäjätunnus tai salasana virheellinen"
       });
     }
+  };
+
+  handleLogout = () => {
+    window.localStorage.clear();
+    this.setState({ user: null });
   };
 
   render() {
@@ -59,7 +70,8 @@ class App extends React.Component {
     }
     return (
       <div>
-        {this.state.user.name} logged in
+        {this.state.user.name} logged in{" "}
+        <button onClick={this.handleLogout}>logout</button>
         <BlogList blogs={this.state.blogs} />
       </div>
     );
