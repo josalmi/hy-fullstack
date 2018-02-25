@@ -31,6 +31,7 @@ class App extends React.Component {
       blogService.setToken(user.token);
     }
     const blogs = await blogService.getAll();
+    blogs.sort((blog1, blog2) => blog2.likes - blog1.likes);
     this.setState({ blogs });
   }
 
