@@ -1,7 +1,11 @@
 import React from "react";
 class Blog extends React.PureComponent {
-  handleClick = () => {
-    this.props.onClick(this.props.blog._id);
+  handleDetailsToggle = () => {
+    this.props.onDetailsToggle(this.props.blog._id);
+  };
+
+  handleLike = () => {
+    this.props.onLike(this.props.blog);
   };
 
   render() {
@@ -10,7 +14,7 @@ class Blog extends React.PureComponent {
       <div
         style={{ border: "1px solid #efefef", padding: "5px", margin: "5px" }}
       >
-        <div onClick={this.handleClick}>
+        <div onClick={this.handleDetailsToggle}>
           {blog.title} {blog.author}
         </div>
         {blog.open && (
@@ -19,7 +23,10 @@ class Blog extends React.PureComponent {
               <a href={blog.url}>{blog.url}</a>
             </div>
             <div>
-              {blog.likes} likes <button type="button">like</button>
+              {blog.likes} likes{" "}
+              <button type="button" onClick={this.handleLike}>
+                like
+              </button>
             </div>
             <div>added by {blog.user.name}</div>
           </div>

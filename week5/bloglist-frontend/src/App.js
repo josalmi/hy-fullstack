@@ -110,10 +110,25 @@ class App extends React.Component {
     }, 5000);
   };
 
-  toggleBlogVisibility = _id => {
+  handleBlogDetailsToggle = _id => {
     this.setState(prev => ({
       blogs: prev.blogs.map(
         blog => (blog._id === _id ? { ...blog, open: !blog.open } : blog)
+      )
+    }));
+  };
+
+  handleBlogLike = async blog => {
+    const updatedBlog = await blogService.update({
+      ...blog,
+      likes: blog.likes + 1
+    });
+    this.setState(prev => ({
+      blogs: prev.blogs.map(
+        blog =>
+          blog._id === updatedBlog._id
+            ? { ...blog, likes: updatedBlog.likes }
+            : blog
       )
     }));
   };
@@ -142,7 +157,8 @@ class App extends React.Component {
         <button onClick={this.handleLogout}>logout</button>
         <BlogList
           blogs={this.state.blogs}
-          onBlogClick={this.toggleBlogVisibility}
+          onBlogDetailsToggle={this.handleBlogDetailsToggle}
+          onBlogLike={this.handleBlogLike}
         />
         <Togglable showLabel="show create blog" hideLabel="hide create blog">
           <BlogForm

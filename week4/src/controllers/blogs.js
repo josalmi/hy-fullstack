@@ -50,7 +50,11 @@ router.put(
   "/:id",
   celebrate(
     {
-      body: blogSchema,
+      body: blogSchema.concat(
+        Joi.object({
+          user: objectIdSchema
+        })
+      ),
       params: Joi.object({
         id: objectIdSchema
       })
