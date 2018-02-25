@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/api/users POST /api/users password min length is ensured 1`] = `
+Object {
+  "error": "Bad Request",
+  "message": "child \\"password\\" fails because [\\"password\\" length must be at least 3 characters long]",
+  "statusCode": 400,
+  "validation": Object {
+    "keys": Array [
+      "password",
+    ],
+    "source": "body",
+  },
+}
+`;
+
+exports[`/api/users POST /api/users username required to be unique 1`] = `
+Object {
+  "error": "Bad Request",
+  "message": "Username \\"test\\" is not available",
+  "statusCode": 400,
+}
+`;

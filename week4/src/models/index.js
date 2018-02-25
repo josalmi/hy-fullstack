@@ -9,7 +9,7 @@ const Blog = mongoose.model("Blog", {
 
 const userSchema = new mongoose.Schema(
   {
-    username: String,
+    username: { type: String, unique: true },
     passwordHash: String,
     name: String,
     adult: Boolean

@@ -14,17 +14,30 @@ router.post(
     body: Joi.object({
       username: Joi.string().required(),
       name: Joi.string(),
-      password: Joi.string().required(),
-      adult: Joi.boolean()
+      password: Joi.string()
+        .min(3)
+        .required(),
+      adult: Joi.boolean().default(true)
     })
   }),
   async (req, res) => {
     const passwordHash = await bcrypt.hash(req.body.password, 10);
-    const user = await new User({
-      ...req.body,
-      passwordHash
-    }).save();
-    res.status(201).json(user);
+    try {
+      const user = await new User({
+        ...req.body,
+        passwordHash
+      }).save();
+      res.status(201).json(user);
+    } catch (err) {
+      if (err.name !== "BulkWriteError" || err.code !== 11000) {
+        throw err;
+      }
+      return res.status(400).json({
+        statusCode: 400,
+        error: "Bad Request",
+        message: `Username "${req.body.username}" is not available`
+      });
+    }
   }
 );
 
