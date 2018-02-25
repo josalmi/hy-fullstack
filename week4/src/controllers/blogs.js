@@ -69,13 +69,23 @@ router.put(
 
 router.delete(
   "/:id",
+  jwtMiddleware,
   celebrate({
     params: Joi.object({
       id: objectIdSchema
     })
   }),
   async (req, res) => {
-    await Blog.findByIdAndRemove(req.params.id);
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) {
+      res.sendStatus(204);
+    }
+    if (blog.user.toString() !== req.user.id) {
+      return res.status(403).json({
+        message: "Only blog owner can delete blog"
+      });
+    }
+    await blog.remove();
     res.sendStatus(204);
   }
 );
