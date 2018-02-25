@@ -2,10 +2,10 @@ import React from "react";
 
 const Login = ({ onLogin, error, formState, onInputChange }) => (
   <form onSubmit={onLogin}>
-    <h2>kirjaudu</h2>
+    <h2>Log in to application</h2>
     {error && <div>{error}</div>}
     <div>
-      käyttäjätunnus{" "}
+      username{" "}
       <input
         name="username"
         value={formState.username}
@@ -13,7 +13,7 @@ const Login = ({ onLogin, error, formState, onInputChange }) => (
       />
     </div>
     <div>
-      salasana{" "}
+      password{" "}
       <input
         name="password"
         type="password"
@@ -21,7 +21,7 @@ const Login = ({ onLogin, error, formState, onInputChange }) => (
         onChange={onInputChange}
       />
     </div>
-    <button type="submit">kirjaudu</button>
+    <button>login</button>
   </form>
 );
 

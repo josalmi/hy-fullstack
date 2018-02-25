@@ -1,6 +1,7 @@
 import React from "react";
 import Login from "./components/Login";
 import BlogList from "./components/BlogList";
+import BlogForm from "./components/BlogForm";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
 
@@ -11,6 +12,11 @@ class App extends React.Component {
       username: "",
       password: ""
     },
+    blogForm: {
+      title: "",
+      author: "",
+      url: ""
+    },
     loginError: null,
     user: null
   };
@@ -20,6 +26,7 @@ class App extends React.Component {
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON);
       this.setState({ user });
+      blogService.setToken(user.token);
     }
     const blogs = await blogService.getAll();
     this.setState({ blogs });
@@ -45,6 +52,7 @@ class App extends React.Component {
         loginForm: { username: "", password: "" }
       });
       window.localStorage.setItem("user", JSON.stringify(user));
+      blogService.setToken(user.token);
     } catch (e) {
       this.setState({
         loginError: "käyttäjätunnus tai salasana virheellinen"
@@ -55,6 +63,24 @@ class App extends React.Component {
   handleLogout = () => {
     window.localStorage.clear();
     this.setState({ user: null });
+  };
+
+  handleBlogInputChange = e => {
+    const { target: { name, value } } = e;
+    this.setState(prev => ({
+      blogForm: {
+        ...prev.blogForm,
+        [name]: value
+      }
+    }));
+  };
+
+  handleCreateBlog = async e => {
+    e.preventDefault();
+    const blog = await blogService.create(this.state.blogForm);
+    this.setState(prev => ({
+      blogs: [...prev.blogs, blog]
+    }));
   };
 
   render() {
@@ -73,6 +99,11 @@ class App extends React.Component {
         {this.state.user.name} logged in{" "}
         <button onClick={this.handleLogout}>logout</button>
         <BlogList blogs={this.state.blogs} />
+        <BlogForm
+          onSubmit={this.handleCreateBlog}
+          onInputChange={this.handleBlogInputChange}
+          formState={this.state.blogForm}
+        />
       </div>
     );
   }
