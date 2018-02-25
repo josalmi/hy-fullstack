@@ -127,7 +127,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 5.2 blogilistan frontend, osa 2
 - [x] 5.3 blogilistan frontend, osa 3
 - [x] 5.4 blogilistan frontend, osa 4 (*)
-- [ ] 5.5 blogilistan frontend, osa 5
+- [x] 5.5 blogilistan frontend, osa 5
 - [ ] 5.6 blogilistan frontend, osa 6 (*)
 - [ ] 5.7 blogilistan frontend, osa 7 (*)
 - [ ] 5.8 blogilistan frontend, osa 8 (*)

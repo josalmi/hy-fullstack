@@ -3,6 +3,7 @@ import Login from "./components/Login";
 import BlogList from "./components/BlogList";
 import BlogForm from "./components/BlogForm";
 import Notification from "./components/Notification";
+import Togglable from "./components/Togglable";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
 
@@ -132,11 +133,13 @@ class App extends React.Component {
         {this.state.user.name} logged in{" "}
         <button onClick={this.handleLogout}>logout</button>
         <BlogList blogs={this.state.blogs} />
-        <BlogForm
-          onSubmit={this.handleCreateBlog}
-          onInputChange={this.handleBlogInputChange}
-          formState={this.state.blogForm}
-        />
+        <Togglable showLabel="show create blog" hideLabel="hide create blog">
+          <BlogForm
+            onSubmit={this.handleCreateBlog}
+            onInputChange={this.handleBlogInputChange}
+            formState={this.state.blogForm}
+          />
+        </Togglable>
       </div>
     );
   }
