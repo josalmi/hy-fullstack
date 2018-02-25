@@ -1,7 +1,7 @@
 const router = require("express-promise-router")();
 const { celebrate, Joi } = require("celebrate");
 
-const { Blog } = require("../models");
+const { Blog, User } = require("../models");
 
 const blogSchema = Joi.object({
   title: Joi.string().required(),
@@ -17,7 +17,10 @@ const objectIdSchema = Joi.string()
   .hex();
 
 router.get("/", async (req, res) => {
-  const blogs = await Blog.find({});
+  const blogs = await Blog.find({}).populate("user", {
+    username: true,
+    name: true
+  });
   res.json(blogs);
 });
 
@@ -27,10 +30,17 @@ router.post(
     body: blogSchema
   }),
   async (req, res) => {
-    const blog = new Blog(req.body);
+    const user = await User.findOne({});
 
-    const result = await blog.save();
-    res.status(201).json(result);
+    const blog = await new Blog({
+      ...req.body,
+      user: user._id
+    }).save();
+
+    user.blogs = [...user.blogs, blog._id];
+    await user.save();
+
+    res.status(201).json(blog);
   }
 );
 
