@@ -1,7 +1,7 @@
 import React from "react";
 import Blog from "./Blog";
 
-const BlogList = ({ blogs, onBlogDetailsToggle, onBlogLike }) => (
+const BlogList = ({ blogs, onBlogDetailsToggle, onBlogLike, onBlogDelete }) => (
   <div>
     <h2>blogs</h2>
     {blogs.map(blog => (
@@ -10,6 +10,7 @@ const BlogList = ({ blogs, onBlogDetailsToggle, onBlogLike }) => (
         blog={blog}
         onDetailsToggle={onBlogDetailsToggle}
         onLike={onBlogLike}
+        onDelete={onBlogDelete}
       />
     ))}
   </div>

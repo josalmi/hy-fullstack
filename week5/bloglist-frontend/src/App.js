@@ -24,15 +24,22 @@ class App extends React.Component {
   };
 
   async componentDidMount() {
-    const loggedUserJSON = window.localStorage.getItem("user");
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON);
-      this.setState({ user });
-      blogService.setToken(user.token);
-    }
     const blogs = await blogService.getAll();
     blogs.sort((blog1, blog2) => blog2.likes - blog1.likes);
     this.setState({ blogs });
+
+    const loggedUserJSON = window.localStorage.getItem("user");
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON);
+      this.setState(prev => ({
+        blogs: prev.blogs.map(blog => ({
+          ...blog,
+          canDelete: user.id === blog.user._id
+        })),
+        user
+      }));
+      blogService.setToken(user.token);
+    }
   }
 
   handleLoginInputChange = e => {
@@ -49,10 +56,14 @@ class App extends React.Component {
     e.preventDefault();
     try {
       const user = await loginService.login(this.state.loginForm);
-      this.setState({
+      this.setState(prev => ({
+        blogs: prev.blogs.map(blog => ({
+          ...blog,
+          canDelete: user.id === blog.user._id
+        })),
         user,
         loginForm: { username: "", password: "" }
-      });
+      }));
       window.localStorage.setItem("user", JSON.stringify(user));
       blogService.setToken(user.token);
       this.showNotification(`Welcome ${user.name}!`);
@@ -134,6 +145,16 @@ class App extends React.Component {
     }));
   };
 
+  handleBlogDelete = async ({ _id, title, author }) => {
+    if (!window.confirm(`delete '${title}' by ${author}`)) {
+      return;
+    }
+    await blogService.remove(_id);
+    this.setState(prev => ({
+      blogs: prev.blogs.filter(blog => blog._id !== _id)
+    }));
+  };
+
   render() {
     if (!this.state.user) {
       return (
@@ -160,6 +181,7 @@ class App extends React.Component {
           blogs={this.state.blogs}
           onBlogDetailsToggle={this.handleBlogDetailsToggle}
           onBlogLike={this.handleBlogLike}
+          onBlogDelete={this.handleBlogDelete}
         />
         <Togglable showLabel="show create blog" hideLabel="hide create blog">
           <BlogForm
