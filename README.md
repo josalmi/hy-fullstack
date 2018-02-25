@@ -118,3 +118,35 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 4.19 blogilistan laajennus, osa 8
 - [x] 4.20 blogilistan laajennus, osa 9 (*)
 - [x] 4.21 blogilistan laajennus, osa 9 (*)
+
+## Week 5
+
+### Bloglist frontend
+
+- [ ] 5.1 blogilistan frontend, osa 1
+- [ ] 5.2 blogilistan frontend, osa 2
+- [ ] 5.3 blogilistan frontend, osa 3
+- [ ] 5.4 blogilistan frontend, osa 4 (*)
+- [ ] 5.5 blogilistan frontend, osa 5
+- [ ] 5.6 blogilistan frontend, osa 6 (*)
+- [ ] 5.7 blogilistan frontend, osa 7 (*)
+- [ ] 5.8 blogilistan frontend, osa 8 (*)
+- [ ] 5.9 blogilistan frontend, osa 9 (*)
+- [ ] 5.10 blogilistan frontend, osa 10 (*)
+- [ ] 5.11 blogilistan frontend, osa 11
+- [ ] 5.12 blogilistan testit, osa 1
+- [ ] 5.13 blogilistan testit, osa 2
+- [ ] 5.14 blogilistan testit, osa 3 (*)
+- [ ] 5.15 blogilistan testit, osa 4
+- [ ] 5.16 blogilistan testit, osa 5 (*)
+
+### Redux unicafe
+
+- [ ] 5.17 unicafe revisited, osa 1
+- [ ] 5.18 unicafe revisited, osa 2
+
+### Redux anecdotes
+
+- [ ] 5.19 anekdootit, osa 1
+- [ ] 5.20 anekdootit, osa 2 (*)
+- [ ] 5.21 anekdootit, osa 3 (*)
