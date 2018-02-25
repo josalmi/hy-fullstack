@@ -7,4 +7,23 @@ const Blog = mongoose.model("Blog", {
   likes: Number
 });
 
-module.exports = { Blog };
+const userSchema = new mongoose.Schema(
+  {
+    username: String,
+    passwordHash: String,
+    name: String,
+    adult: Boolean
+  },
+  {
+    toJSON: {
+      transform: (doc, ret, options) => {
+        delete ret.passwordHash;
+        return ret;
+      }
+    }
+  }
+);
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = { Blog, User };
