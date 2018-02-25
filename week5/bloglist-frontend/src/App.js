@@ -1,28 +1,66 @@
-import React from 'react'
-import Blog from './components/Blog'
-import blogService from './services/blogs'
+import React from "react";
+import Login from "./components/Login";
+import BlogList from "./components/BlogList";
+import blogService from "./services/blogs";
+import loginService from "./services/login";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      blogs: []
-    }
+  state = {
+    blogs: [],
+    loginForm: {
+      username: "",
+      password: ""
+    },
+    loginError: null,
+    user: null
+  };
+
+  async componentDidMount() {
+    const blogs = await blogService.getAll();
+    this.setState({ blogs });
   }
 
-  componentDidMount() {
-    blogService.getAll().then(blogs =>
-      this.setState({ blogs })
-    )
-  } 
+  handleLoginInputChange = e => {
+    const { target: { name, value } } = e;
+    this.setState(prev => ({
+      loginForm: {
+        ...prev.loginForm,
+        [name]: value
+      }
+    }));
+  };
+
+  handleLogin = async e => {
+    e.preventDefault();
+    this.setState({ loginError: null });
+    try {
+      const user = await loginService.login(this.state.loginForm);
+      this.setState({
+        user,
+        loginForm: { username: "", password: "" }
+      });
+    } catch (e) {
+      this.setState({
+        loginError: "käyttäjätunnus tai salasana virheellinen"
+      });
+    }
+  };
 
   render() {
+    if (!this.state.user) {
+      return (
+        <Login
+          formState={this.state.loginForm}
+          onInputChange={this.handleLoginInputChange}
+          onLogin={this.handleLogin}
+          error={this.state.loginError}
+        />
+      );
+    }
     return (
       <div>
-        <h2>blogs</h2>
-        {this.state.blogs.map(blog => 
-          <Blog key={blog._id} blog={blog}/>
-        )}
+        {this.state.user.name} logged in
+        <BlogList blogs={this.state.blogs} />
       </div>
     );
   }
