@@ -115,6 +115,6 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 4.16 blogilistan laajennus, osa 5 (*)
 - [x] 4.17 blogilistan laajennus, osa 6
 - [x] 4.18 blogilistan laajennus, osa 7
-- [ ] 4.19 blogilistan laajennus, osa 8
+- [x] 4.19 blogilistan laajennus, osa 8
 - [ ] 4.20 blogilistan laajennus, osa 9 (*)
 - [ ] 4.21 blogilistan laajennus, osa 9 (*)

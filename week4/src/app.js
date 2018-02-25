@@ -17,4 +17,11 @@ app.use("/api/login", loginRouter);
 
 app.use(celebrateErrors());
 
+app.use((err, req, res, next) => {
+  if (err.name !== "UnauthorizedError") {
+    return next(err);
+  }
+  return res.status(401).json({ error: "token missing or invalid" });
+});
+
 module.exports = app;

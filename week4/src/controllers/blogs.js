@@ -1,6 +1,7 @@
 const router = require("express-promise-router")();
 const { celebrate, Joi } = require("celebrate");
 
+const jwtMiddleware = require("./middleware/jwt");
 const { Blog, User } = require("../models");
 
 const blogSchema = Joi.object({
@@ -26,11 +27,12 @@ router.get("/", async (req, res) => {
 
 router.post(
   "/",
+  jwtMiddleware,
   celebrate({
     body: blogSchema
   }),
   async (req, res) => {
-    const user = await User.findOne({});
+    const user = await User.findById(req.user.id);
 
     const blog = await new Blog({
       ...req.body,

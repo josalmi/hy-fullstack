@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 const { User } = require("../models");
+const config = require("../config");
 
 router.post(
   "/",
@@ -30,7 +31,7 @@ router.post(
       id: user.id
     };
 
-    const token = jwt.sign(userForToken, process.env.SECRET);
+    const token = jwt.sign(userForToken, config.secret);
 
     res.status(200).send({ token, username: user.username, name: user.name });
   }
