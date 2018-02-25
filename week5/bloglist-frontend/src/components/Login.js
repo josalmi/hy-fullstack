@@ -1,9 +1,8 @@
 import React from "react";
 
-const Login = ({ onLogin, error, formState, onInputChange }) => (
+const Login = ({ onLogin, formState, onInputChange }) => (
   <form onSubmit={onLogin}>
     <h2>Log in to application</h2>
-    {error && <div>{error}</div>}
     <div>
       username{" "}
       <input

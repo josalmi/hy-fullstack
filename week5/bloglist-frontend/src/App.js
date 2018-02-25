@@ -2,11 +2,13 @@ import React from "react";
 import Login from "./components/Login";
 import BlogList from "./components/BlogList";
 import BlogForm from "./components/BlogForm";
+import Notification from "./components/Notification";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
 
 class App extends React.Component {
   state = {
+    user: null,
     blogs: [],
     loginForm: {
       username: "",
@@ -17,8 +19,7 @@ class App extends React.Component {
       author: "",
       url: ""
     },
-    loginError: null,
-    user: null
+    notification: null
   };
 
   async componentDidMount() {
@@ -44,7 +45,6 @@ class App extends React.Component {
 
   handleLogin = async e => {
     e.preventDefault();
-    this.setState({ loginError: null });
     try {
       const user = await loginService.login(this.state.loginForm);
       this.setState({
@@ -53,16 +53,16 @@ class App extends React.Component {
       });
       window.localStorage.setItem("user", JSON.stringify(user));
       blogService.setToken(user.token);
+      this.showNotification(`Welcome ${user.name}!`);
     } catch (e) {
-      this.setState({
-        loginError: "käyttäjätunnus tai salasana virheellinen"
-      });
+      this.showNotification(`wrong username or password`, false);
     }
   };
 
   handleLogout = () => {
     window.localStorage.clear();
     this.setState({ user: null });
+    this.showNotification(`logged out`);
   };
 
   handleBlogInputChange = e => {
@@ -77,25 +77,58 @@ class App extends React.Component {
 
   handleCreateBlog = async e => {
     e.preventDefault();
-    const blog = await blogService.create(this.state.blogForm);
-    this.setState(prev => ({
-      blogs: [...prev.blogs, blog]
-    }));
+    try {
+      const blog = await blogService.create(this.state.blogForm);
+      this.showNotification(
+        `a new blog '${blog.title}' by ${blog.author} added`
+      );
+      this.setState(prev => ({
+        blogs: [...prev.blogs, blog],
+        blogForm: {
+          title: "",
+          author: "",
+          url: ""
+        }
+      }));
+    } catch (e) {
+      this.showNotification(e.response.data.message, false);
+    }
+  };
+
+  showNotification = (message, success = true) => {
+    this.setState({
+      notification: {
+        message,
+        success
+      }
+    });
+    setTimeout(() => {
+      this.setState({
+        notification: null
+      });
+    }, 5000);
   };
 
   render() {
     if (!this.state.user) {
       return (
-        <Login
-          formState={this.state.loginForm}
-          onInputChange={this.handleLoginInputChange}
-          onLogin={this.handleLogin}
-          error={this.state.loginError}
-        />
+        <div>
+          {this.state.notification && (
+            <Notification {...this.state.notification} />
+          )}
+          <Login
+            formState={this.state.loginForm}
+            onInputChange={this.handleLoginInputChange}
+            onLogin={this.handleLogin}
+          />
+        </div>
       );
     }
     return (
       <div>
+        {this.state.notification && (
+          <Notification {...this.state.notification} />
+        )}
         {this.state.user.name} logged in{" "}
         <button onClick={this.handleLogout}>logout</button>
         <BlogList blogs={this.state.blogs} />
