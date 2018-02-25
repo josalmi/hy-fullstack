@@ -110,6 +110,14 @@ class App extends React.Component {
     }, 5000);
   };
 
+  toggleBlogVisibility = _id => {
+    this.setState(prev => ({
+      blogs: prev.blogs.map(
+        blog => (blog._id === _id ? { ...blog, open: !blog.open } : blog)
+      )
+    }));
+  };
+
   render() {
     if (!this.state.user) {
       return (
@@ -132,7 +140,10 @@ class App extends React.Component {
         )}
         {this.state.user.name} logged in{" "}
         <button onClick={this.handleLogout}>logout</button>
-        <BlogList blogs={this.state.blogs} />
+        <BlogList
+          blogs={this.state.blogs}
+          onBlogClick={this.toggleBlogVisibility}
+        />
         <Togglable showLabel="show create blog" hideLabel="hide create blog">
           <BlogForm
             onSubmit={this.handleCreateBlog}
