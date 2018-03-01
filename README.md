@@ -121,7 +121,7 @@ Course material: <https://fullstack-hy.github.io/>
 
 ## Week 5
 
-### Bloglist frontend
+### Bloglist frontend ([solution](week5/bloglist-frontend/))
 
 - [x] 5.1 blogilistan frontend, osa 1
 - [x] 5.2 blogilistan frontend, osa 2
@@ -133,20 +133,20 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 5.8 blogilistan frontend, osa 8 (*)
 - [x] 5.9 blogilistan frontend, osa 9 (*)
 - [x] 5.10 blogilistan frontend, osa 10 (*)
-- [ ] 5.11 blogilistan frontend, osa 11
-- [ ] 5.12 blogilistan testit, osa 1
-- [ ] 5.13 blogilistan testit, osa 2
-- [ ] 5.14 blogilistan testit, osa 3 (*)
-- [ ] 5.15 blogilistan testit, osa 4
-- [ ] 5.16 blogilistan testit, osa 5 (*)
+- [x] 5.11 blogilistan frontend, osa 11
+- [x] 5.12 blogilistan testit, osa 1
+- [x] 5.13 blogilistan testit, osa 2
+- [x] 5.14 blogilistan testit, osa 3 (*)
+- [x] 5.15 blogilistan testit, osa 4
+- [x] 5.16 blogilistan testit, osa 5 (*)
 
-### Redux unicafe
+### Redux unicafe ([solution](week5/redux-unicafe/))
 
-- [ ] 5.17 unicafe revisited, osa 1
-- [ ] 5.18 unicafe revisited, osa 2
+- [x] 5.17 unicafe revisited, osa 1
+- [x] 5.18 unicafe revisited, osa 2
 
-### Redux anecdotes
+### Redux anecdotes ([solution](week5/redux-anecdotes/))
 
-- [ ] 5.19 anekdootit, osa 1
-- [ ] 5.20 anekdootit, osa 2 (*)
-- [ ] 5.21 anekdootit, osa 3 (*)
+- [x] 5.19 anekdootit, osa 1
+- [x] 5.20 anekdootit, osa 2 (*)
+- [x] 5.21 anekdootit, osa 3 (*)

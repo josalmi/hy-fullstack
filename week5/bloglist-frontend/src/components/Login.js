@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Login = ({ onLogin, formState, onInputChange }) => (
   <form onSubmit={onLogin}>
@@ -23,5 +24,14 @@ const Login = ({ onLogin, formState, onInputChange }) => (
     <button>login</button>
   </form>
 );
+
+Login.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+  formState: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired
+  }).isRequired,
+  onInputChange: PropTypes.func.isRequired
+};
 
 export default Login;

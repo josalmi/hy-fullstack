@@ -1,11 +1,11 @@
 import React from "react";
-import Login from "./components/Login";
-import BlogList from "./components/BlogList";
-import BlogForm from "./components/BlogForm";
-import Notification from "./components/Notification";
-import Togglable from "./components/Togglable";
-import blogService from "./services/blogs";
-import loginService from "./services/login";
+import Login from "./Login";
+import BlogList from "./BlogList";
+import BlogForm from "./BlogForm";
+import Notification from "./Notification";
+import Togglable from "./Togglable";
+import blogService from "../services/blogs";
+import loginService from "../services/login";
 
 class App extends React.Component {
   state = {
