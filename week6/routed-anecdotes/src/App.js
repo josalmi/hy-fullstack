@@ -2,10 +2,44 @@ import React from "react";
 import { Route, NavLink, Link, withRouter } from "react-router-dom";
 
 const Menu = () => (
-  <div>
-    <NavLink to="/">anecdotes</NavLink>&nbsp;
-    <NavLink to="/create">create new</NavLink>&nbsp;
-    <NavLink to="/about">about</NavLink>&nbsp;
+  <div style={{ background: "#444", padding: "0 5px" }}>
+    <NavLink
+      exact
+      to="/"
+      style={{
+        display: "inline-block",
+        color: "white",
+        textDecoration: "none",
+        padding: "5px 5px"
+      }}
+      activeStyle={{ background: "#999999" }}
+    >
+      anecdotes
+    </NavLink>&nbsp;
+    <NavLink
+      style={{
+        display: "inline-block",
+        color: "white",
+        textDecoration: "none",
+        padding: "5px 5px"
+      }}
+      activeStyle={{ background: "#999999" }}
+      to="/create"
+    >
+      create new
+    </NavLink>&nbsp;
+    <NavLink
+      style={{
+        display: "inline-block",
+        color: "white",
+        textDecoration: "none",
+        padding: "5px 5px"
+      }}
+      activeStyle={{ background: "#999999" }}
+      to="/about"
+    >
+      about
+    </NavLink>&nbsp;
   </div>
 );
 
