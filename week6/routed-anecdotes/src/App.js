@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, NavLink, Link, withRouter } from "react-router-dom";
+import { Container, Segment, List } from "semantic-ui-react";
 
 const Menu = () => (
   <div style={{ background: "#444", padding: "0 5px" }}>
@@ -46,13 +47,13 @@ const Menu = () => (
 const AnecdoteList = ({ anecdotes }) => (
   <div>
     <h2>Anecdotes</h2>
-    <ul>
+    <List relaxed>
       {anecdotes.map(anecdote => (
-        <li key={anecdote.id}>
+        <List.Item key={anecdote.id}>
           <Link to={`/anecdotes/${anecdote.id}`}>{anecdote.content}</Link>
-        </li>
+        </List.Item>
       ))}
-    </ul>
+    </List>
   </div>
 );
 
@@ -233,7 +234,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <h1>Software anecdotes</h1>
         <Menu />
         {this.state.notification && (
@@ -257,8 +258,10 @@ class App extends React.Component {
             <CreateNew history={history} addNew={this.addNew} />
           )}
         />
-        <Footer />
-      </div>
+        <Segment inverted>
+          <Footer />
+        </Segment>
+      </Container>
     );
   }
 }
