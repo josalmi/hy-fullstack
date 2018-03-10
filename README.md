@@ -150,3 +150,29 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 5.19 anekdootit, osa 1
 - [x] 5.20 anekdootit, osa 2 (*)
 - [x] 5.21 anekdootit, osa 3 (*)
+
+## Week 6
+
+- [ ] 6.1 ESlint
+- [ ] 6.2 paremmat anekdootit, osa 1
+- [ ] 6.3 paremmat anekdootit, osa 2
+- [ ] 6.4 paremmat anekdootit, osa 3
+- [ ] 6.5 paremmat anekdootit, osa 4
+- [ ] 6.6 paremmat anekdootit, osa 5
+- [ ] 6.7 paremmat anekdootit, osa 6
+- [ ] 6.8 paremmat anekdootit, osa 7
+- [ ] 6.9 paremmat anekdootit, osa 8
+- [ ] 6.10 anekdootit ja backend, osa 1
+- [ ] 6.11 anekdootit ja backend, osa 2
+- [ ] 6.12 anekdootit ja backend, osa 3
+- [ ] 6.13 anekdootit ja backend, osa 4
+- [ ] 6.14 anekdootit ja backend, osa 5
+- [ ] 6.15 anekdootit ja backend, osa 6
+- [ ] 6.16 routed anecdotes, osa 1
+- [ ] 6.17 routed anecdotes, osa 2
+- [ ] 6.18 routed anecdotes, osa 3
+- [ ] 6.19 styled anecdotes, osa 1
+- [ ] 6.20 styled anecdotes, osa 2
+- [ ] 6.21 styled anecdotes, osa 3
+- [ ] 6.22 styled anecdotes, osa 4
+- [ ] 6.23 styled anecdotes, osa 5
