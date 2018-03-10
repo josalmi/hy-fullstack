@@ -158,7 +158,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 6.3 paremmat anekdootit, osa 2
 - [x] 6.4 paremmat anekdootit, osa 3
 - [x] 6.5 paremmat anekdootit, osa 4
-- [ ] 6.6 paremmat anekdootit, osa 5
+- [x] 6.6 paremmat anekdootit, osa 5
 - [ ] 6.7 paremmat anekdootit, osa 6
 - [ ] 6.8 paremmat anekdootit, osa 7
 - [ ] 6.9 paremmat anekdootit, osa 8
