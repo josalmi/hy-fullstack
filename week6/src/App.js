@@ -6,7 +6,7 @@ import AnecdoteList from "./components/AnecdoteList";
 const App = ({ store }) => (
   <div>
     <h1>Programming anecdotes</h1>
-    <Notification />
+    <Notification store={store} />
     <AnecdoteList store={store} />
     <AnecdoteForm store={store} />
   </div>
