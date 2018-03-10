@@ -14,15 +14,10 @@ const initialState = anecdotesAtStart.map(asObject);
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-  case "VOTE":
+  case "UPDATE_ANECDOTE":
     return state.map(
       anecdote =>
-        anecdote.id === action.id
-          ? {
-            ...anecdote,
-            votes: anecdote.votes + 1
-          }
-          : anecdote
+        anecdote.id === action.anecdote.id ? action.anecdote : anecdote
     );
   case "CREATE":
     return [...state, action.anecdote];
@@ -41,10 +36,10 @@ export const createAnecdote = anecdote => {
   };
 };
 
-export const voteAnecdote = id => {
+export const updateAnecdote = anecdote => {
   return {
-    type: "VOTE",
-    id
+    type: "UPDATE_ANECDOTE",
+    anecdote
   };
 };
 

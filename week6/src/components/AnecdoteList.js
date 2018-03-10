@@ -1,15 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import { voteAnecdote } from "../reducers/anecdoteReducer";
+import { updateAnecdote } from "../reducers/anecdoteReducer";
 import {
   showNotification,
   hideNotification
 } from "../reducers/notificationReducer";
 import Filter from "./Filter";
+import anecdoteService from "../services/anecdoteService";
 
 const AnecdoteList = ({
   anecdotes,
-  voteAnecdote,
+  updateAnecdote,
   showNotification,
   hideNotification
 }) => {
@@ -23,8 +24,12 @@ const AnecdoteList = ({
           <div>
             has {anecdote.votes}
             <button
-              onClick={() => {
-                voteAnecdote(anecdote.id);
+              onClick={async () => {
+                const updatedAnecdote = await anecdoteService.patch(
+                  anecdote.id,
+                  { votes: anecdote.votes + 1 }
+                );
+                updateAnecdote(updatedAnecdote);
                 showNotification(`you voted '${anecdote.content}'`);
                 setTimeout(() => {
                   hideNotification();
@@ -52,7 +57,7 @@ export default connect(
     };
   },
   {
-    voteAnecdote,
+    updateAnecdote,
     showNotification,
     hideNotification
   }
