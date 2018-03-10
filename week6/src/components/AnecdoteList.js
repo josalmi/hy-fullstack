@@ -1,4 +1,5 @@
 import React from "react";
+import { voteAnecdote } from "../reducers/anecdoteReducer";
 
 const AnecdoteList = ({ store }) => {
   const anecdotes = store.getState();
@@ -10,14 +11,7 @@ const AnecdoteList = ({ store }) => {
           <div>{anecdote.content}</div>
           <div>
             has {anecdote.votes}
-            <button
-              onClick={() =>
-                store.dispatch({
-                  type: "VOTE",
-                  id: anecdote.id
-                })
-              }
-            >
+            <button onClick={() => store.dispatch(voteAnecdote(anecdote.id))}>
               vote
             </button>
           </div>
