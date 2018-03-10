@@ -168,7 +168,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 6.13 anekdootit ja backend, osa 4
 - [x] 6.14 anekdootit ja backend, osa 5
 - [x] 6.15 anekdootit ja backend, osa 6
-- [ ] 6.16 routed anecdotes, osa 1
+- [x] 6.16 routed anecdotes, osa 1
 - [ ] 6.17 routed anecdotes, osa 2
 - [ ] 6.18 routed anecdotes, osa 3
 - [ ] 6.19 styled anecdotes, osa 1
