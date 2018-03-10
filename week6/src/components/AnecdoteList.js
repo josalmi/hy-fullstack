@@ -6,7 +6,6 @@ import {
   hideNotification
 } from "../reducers/notificationReducer";
 import Filter from "./Filter";
-import anecdoteService from "../services/anecdoteService";
 
 const AnecdoteList = ({
   anecdotes,
@@ -25,11 +24,9 @@ const AnecdoteList = ({
             has {anecdote.votes}
             <button
               onClick={async () => {
-                const updatedAnecdote = await anecdoteService.patch(
-                  anecdote.id,
-                  { votes: anecdote.votes + 1 }
-                );
-                updateAnecdote(updatedAnecdote);
+                await updateAnecdote(anecdote.id, {
+                  votes: anecdote.votes + 1
+                });
                 showNotification(`you voted '${anecdote.content}'`);
                 setTimeout(() => {
                   hideNotification();

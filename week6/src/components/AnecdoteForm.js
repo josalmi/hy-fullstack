@@ -5,15 +5,13 @@ import {
   showNotification,
   hideNotification
 } from "../reducers/notificationReducer";
-import anecdoteService from "../services/anecdoteService";
 
 class AnecdoteForm extends React.Component {
   handleSubmit = async e => {
     e.preventDefault();
     const content = e.target.anecdote.value;
     e.target.anecdote.value = "";
-    const anecdote = await anecdoteService.create({ content, votes: 0 });
-    this.props.createAnecdote(anecdote);
+    await this.props.createAnecdote({ content, votes: 0 });
     this.props.showNotification(`you added '${content}'`);
     setTimeout(() => {
       this.props.hideNotification();

@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
       anecdote =>
         anecdote.id === action.anecdote.id ? action.anecdote : anecdote
     );
-  case "CREATE":
+  case "CREATE_ANECDOTE":
     return [...state, action.anecdote];
   case "GET_ANECDOTES":
     return action.anecdotes;
@@ -21,16 +21,22 @@ const reducer = (state = initialState, action) => {
 export default reducer;
 
 export const createAnecdote = anecdote => {
-  return {
-    type: "CREATE",
-    anecdote
+  return async dispatch => {
+    const createdAnecdote = await anecdoteService.create(anecdote);
+    dispatch({
+      type: "CREATE_ANECDOTE",
+      anecdote: createdAnecdote
+    });
   };
 };
 
-export const updateAnecdote = anecdote => {
-  return {
-    type: "UPDATE_ANECDOTE",
-    anecdote
+export const updateAnecdote = (id, anecdote) => {
+  return async dispatch => {
+    const updatedAnecdote = await anecdoteService.patch(id, anecdote);
+    dispatch({
+      type: "UPDATE_ANECDOTE",
+      anecdote: updatedAnecdote
+    });
   };
 };
 
