@@ -14,8 +14,9 @@ const reducer = (state = initialState, action) => {
       ...state,
       message: null
     };
+  default:
+    return state;
   }
-  return state;
 };
 
 export default reducer;

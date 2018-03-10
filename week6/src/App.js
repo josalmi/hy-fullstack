@@ -3,13 +3,11 @@ import { connect } from "react-redux";
 import Notification from "./components/Notification";
 import AnecdoteForm from "./components/AnecdoteForm";
 import AnecdoteList from "./components/AnecdoteList";
-import anecdoteService from "./services/anecdoteService";
 import { getAnecdotes } from "./reducers/anecdoteReducer";
 
 class App extends React.PureComponent {
-  async componentDidMount() {
-    const anecdotes = await anecdoteService.getAll();
-    this.props.getAnecdotes(anecdotes);
+  componentDidMount() {
+    this.props.getAnecdotes();
   }
 
   render() {

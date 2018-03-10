@@ -2,8 +2,9 @@ const reducer = (state = "", action) => {
   switch (action.type) {
   case "CHANGE_FILTER":
     return action.value;
+  default:
+    return state;
   }
-  return state;
 };
 
 export default reducer;

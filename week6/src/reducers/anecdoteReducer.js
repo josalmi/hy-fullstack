@@ -1,16 +1,6 @@
-const anecdotesAtStart = [];
+import anecdoteService from "../services/anecdoteService";
 
-const getId = () => (100000 * Math.random()).toFixed(0);
-
-const asObject = anecdote => {
-  return {
-    content: anecdote,
-    id: getId(),
-    votes: 0
-  };
-};
-
-const initialState = anecdotesAtStart.map(asObject);
+const initialState = [];
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -23,8 +13,9 @@ const reducer = (state = initialState, action) => {
     return [...state, action.anecdote];
   case "GET_ANECDOTES":
     return action.anecdotes;
+  default:
+    return state;
   }
-  return state;
 };
 
 export default reducer;
@@ -43,9 +34,12 @@ export const updateAnecdote = anecdote => {
   };
 };
 
-export const getAnecdotes = anecdotes => {
-  return {
-    type: "GET_ANECDOTES",
-    anecdotes
+export const getAnecdotes = () => {
+  return async dispatch => {
+    const anecdotes = await anecdoteService.getAll();
+    dispatch({
+      type: "GET_ANECDOTES",
+      anecdotes
+    });
   };
 };
