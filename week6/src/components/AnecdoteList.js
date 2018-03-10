@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { voteAnecdote } from "../reducers/anecdoteReducer";
 import {
   showNotification,
@@ -6,12 +7,17 @@ import {
 } from "../reducers/notificationReducer";
 import Filter from "./Filter";
 
-const AnecdoteList = ({ store }) => {
-  const { anecdotes, filter } = store.getState();
+const AnecdoteList = ({
+  anecdotes,
+  filter,
+  voteAnecdote,
+  showNotification,
+  hideNotification
+}) => {
   return (
     <div>
       <h2>Anecdotes</h2>
-      <Filter store={store} />
+      <Filter />
       {anecdotes
         .filter(anecdote =>
           anecdote.content.toLowerCase().includes(filter.toLowerCase())
@@ -24,12 +30,10 @@ const AnecdoteList = ({ store }) => {
               has {anecdote.votes}
               <button
                 onClick={() => {
-                  store.dispatch(voteAnecdote(anecdote.id));
-                  store.dispatch(
-                    showNotification(`you voted '${anecdote.content}'`)
-                  );
+                  voteAnecdote(anecdote.id);
+                  showNotification(`you voted '${anecdote.content}'`);
                   setTimeout(() => {
-                    store.dispatch(hideNotification());
+                    hideNotification();
                   }, 5000);
                 }}
               >
@@ -42,4 +46,14 @@ const AnecdoteList = ({ store }) => {
   );
 };
 
-export default AnecdoteList;
+export default connect(
+  ({ anecdotes, filter }) => ({
+    anecdotes,
+    filter
+  }),
+  {
+    voteAnecdote,
+    showNotification,
+    hideNotification
+  }
+)(AnecdoteList);

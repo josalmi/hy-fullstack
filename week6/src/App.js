@@ -3,12 +3,12 @@ import Notification from "./components/Notification";
 import AnecdoteForm from "./components/AnecdoteForm";
 import AnecdoteList from "./components/AnecdoteList";
 
-const App = ({ store }) => (
+const App = () => (
   <div>
     <h1>Programming anecdotes</h1>
-    <Notification store={store} />
-    <AnecdoteList store={store} />
-    <AnecdoteForm store={store} />
+    <Notification />
+    <AnecdoteList />
+    <AnecdoteForm />
   </div>
 );
 
