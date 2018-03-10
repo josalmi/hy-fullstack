@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, NavLink, Link } from "react-router-dom";
+import { Route, NavLink, Link, withRouter } from "react-router-dom";
 
 const Menu = () => (
   <div>
@@ -158,7 +158,14 @@ class App extends React.Component {
 
   addNew = anecdote => {
     anecdote.id = (Math.random() * 10000).toFixed(0);
-    this.setState({ anecdotes: this.state.anecdotes.concat(anecdote) });
+    this.setState({
+      anecdotes: this.state.anecdotes.concat(anecdote),
+      message: `a new anecdote ${anecdote.content} created!`
+    });
+    setTimeout(() => {
+      this.setState({ message: null });
+    }, 10000);
+    this.props.history.push("/");
   };
 
   anecdoteById = id => this.state.anecdotes.find(a => a.id === id);
@@ -181,6 +188,7 @@ class App extends React.Component {
       <div>
         <h1>Software anecdotes</h1>
         <Menu />
+        {this.state.message}
         <Route
           exact
           path="/"
@@ -195,7 +203,9 @@ class App extends React.Component {
         <Route path="/about" render={() => <About />} />
         <Route
           path="/create"
-          render={() => <CreateNew addNew={this.addNew} />}
+          render={({ history }) => (
+            <CreateNew history={history} addNew={this.addNew} />
+          )}
         />
         <Footer />
       </div>
@@ -203,4 +213,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
