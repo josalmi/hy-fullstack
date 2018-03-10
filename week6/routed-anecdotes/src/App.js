@@ -130,6 +130,20 @@ class CreateNew extends React.Component {
   }
 }
 
+const Notification = ({ message }) => (
+  <div
+    style={{
+      marginTop: "5px",
+      padding: "5px",
+      color: "green",
+      border: "1px solid green",
+      borderRadius: "7px"
+    }}
+  >
+    {message}
+  </div>
+);
+
 class App extends React.Component {
   constructor() {
     super();
@@ -160,10 +174,10 @@ class App extends React.Component {
     anecdote.id = (Math.random() * 10000).toFixed(0);
     this.setState({
       anecdotes: this.state.anecdotes.concat(anecdote),
-      message: `a new anecdote ${anecdote.content} created!`
+      notification: `a new anecdote ${anecdote.content} created!`
     });
     setTimeout(() => {
-      this.setState({ message: null });
+      this.setState({ notification: null });
     }, 10000);
     this.props.history.push("/");
   };
@@ -188,7 +202,9 @@ class App extends React.Component {
       <div>
         <h1>Software anecdotes</h1>
         <Menu />
-        {this.state.message}
+        {this.state.notification && (
+          <Notification message={this.state.notification} />
+        )}
         <Route
           exact
           path="/"
