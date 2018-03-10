@@ -1,18 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { updateAnecdote } from "../reducers/anecdoteReducer";
-import {
-  showNotification,
-  hideNotification
-} from "../reducers/notificationReducer";
+import { notify } from "../reducers/notificationReducer";
 import Filter from "./Filter";
 
-const AnecdoteList = ({
-  anecdotes,
-  updateAnecdote,
-  showNotification,
-  hideNotification
-}) => {
+const AnecdoteList = ({ anecdotes, updateAnecdote, notify }) => {
   return (
     <div>
       <h2>Anecdotes</h2>
@@ -27,10 +19,7 @@ const AnecdoteList = ({
                 await updateAnecdote(anecdote.id, {
                   votes: anecdote.votes + 1
                 });
-                showNotification(`you voted '${anecdote.content}'`);
-                setTimeout(() => {
-                  hideNotification();
-                }, 5000);
+                notify(`you voted '${anecdote.content}'`, 5000);
               }}
             >
               vote
@@ -55,7 +44,6 @@ export default connect(
   },
   {
     updateAnecdote,
-    showNotification,
-    hideNotification
+    notify
   }
 )(AnecdoteList);

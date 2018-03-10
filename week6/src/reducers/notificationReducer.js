@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
       ...state,
       message: action.message
     };
-  case "HIDE_NOTIFICATION":
+  case "CLEAR_NOTIFICATION":
     return {
       ...state,
       message: null
@@ -21,15 +21,16 @@ const reducer = (state = initialState, action) => {
 
 export default reducer;
 
-export const showNotification = message => {
-  return {
+export const notify = (message, timeout) => dispatch => {
+  dispatch({
     type: "SHOW_NOTIFICATION",
     message
-  };
-};
-
-export const hideNotification = () => {
-  return {
-    type: "HIDE_NOTIFICATION"
-  };
+  });
+  setTimeout(
+    () =>
+      dispatch({
+        type: "CLEAR_NOTIFICATION"
+      }),
+    timeout
+  );
 };
