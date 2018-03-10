@@ -162,7 +162,7 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 6.7 paremmat anekdootit, osa 6
 - [x] 6.8 paremmat anekdootit, osa 7
 - [x] 6.9 paremmat anekdootit, osa 8
-- [ ] 6.10 anekdootit ja backend, osa 1
+- [x] 6.10 anekdootit ja backend, osa 1
 - [ ] 6.11 anekdootit ja backend, osa 2
 - [ ] 6.12 anekdootit ja backend, osa 3
 - [ ] 6.13 anekdootit ja backend, osa 4
