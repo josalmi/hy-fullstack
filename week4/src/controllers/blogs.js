@@ -71,6 +71,24 @@ router.put(
   }
 );
 
+router.post(
+  "/:id/comments",
+  celebrate({
+    body: Joi.object({
+      comment: Joi.string().required()
+    }),
+    params: Joi.object({
+      id: objectIdSchema
+    })
+  }),
+  async (req, res) => {
+    const blog = await Blog.findById(req.params.id);
+    blog.comments = [...blog.comments, req.body.comment];
+    const updatedBlog = await blog.save();
+    res.json(updatedBlog);
+  }
+);
+
 router.delete(
   "/:id",
   jwtMiddleware,

@@ -1,230 +1,58 @@
 import React from "react";
-import { Route, NavLink } from "react-router-dom";
-import { Segment, Container, Menu, Icon } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { Route, NavLink, Switch, withRouter } from "react-router-dom";
+import { Segment, Container, Menu, Icon, Message } from "semantic-ui-react";
 import Login from "./Login";
-import BlogList from "./BlogList";
-import BlogForm from "./BlogForm";
 import Users from "./Users";
-import Notification from "./Notification";
-import Togglable from "./Togglable";
-import blogService from "../services/blogs";
-import loginService from "../services/login";
+import Blogs from "./Blogs";
+import { logout } from "../ducks/sessions";
 
 class App extends React.Component {
-  state = {
-    user: null,
-    blogs: [],
-    loginForm: {
-      username: "",
-      password: ""
-    },
-    blogForm: {
-      title: "",
-      author: "",
-      url: ""
-    },
-    notification: null
-  };
-
-  async componentDidMount() {
-    const blogs = await blogService.getAll();
-    blogs.sort((blog1, blog2) => blog2.likes - blog1.likes);
-    this.setState({ blogs });
-
-    const loggedUserJSON = window.localStorage.getItem("user");
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON);
-      this.setState(prev => ({
-        blogs: prev.blogs.map(blog => ({
-          ...blog,
-          canDelete: user.id === blog.user._id
-        })),
-        user
-      }));
-      blogService.setToken(user.token);
-    }
-  }
-
-  handleLoginInputChange = e => {
-    const { target: { name, value } } = e;
-    this.setState(prev => ({
-      loginForm: {
-        ...prev.loginForm,
-        [name]: value
-      }
-    }));
-  };
-
-  handleLogin = async e => {
-    e.preventDefault();
-    try {
-      const user = await loginService.login(this.state.loginForm);
-      this.setState(prev => ({
-        blogs: prev.blogs.map(blog => ({
-          ...blog,
-          canDelete: user.id === blog.user._id
-        })),
-        user,
-        loginForm: { username: "", password: "" }
-      }));
-      window.localStorage.setItem("user", JSON.stringify(user));
-      blogService.setToken(user.token);
-      this.showNotification(`Welcome ${user.name}!`);
-    } catch (e) {
-      this.showNotification(`wrong username or password`, false);
-    }
-  };
-
-  handleLogout = () => {
-    window.localStorage.clear();
-    this.setState({ user: null });
-    this.showNotification(`logged out`);
-  };
-
-  handleBlogInputChange = e => {
-    const { target: { name, value } } = e;
-    this.setState(prev => ({
-      blogForm: {
-        ...prev.blogForm,
-        [name]: value
-      }
-    }));
-  };
-
-  handleCreateBlog = async e => {
-    e.preventDefault();
-    try {
-      const blog = await blogService.create(this.state.blogForm);
-      this.showNotification(
-        `a new blog '${blog.title}' by ${blog.author} added`
-      );
-      this.setState(prev => ({
-        blogs: [...prev.blogs, blog],
-        blogForm: {
-          title: "",
-          author: "",
-          url: ""
-        }
-      }));
-    } catch (e) {
-      this.showNotification(e.response.data.message, false);
-    }
-  };
-
-  showNotification = (message, success = true) => {
-    this.setState({
-      notification: {
-        message,
-        success
-      }
-    });
-    setTimeout(() => {
-      this.setState({
-        notification: null
-      });
-    }, 5000);
-  };
-
-  handleBlogDetailsToggle = _id => {
-    this.setState(prev => ({
-      blogs: prev.blogs.map(
-        blog => (blog._id === _id ? { ...blog, open: !blog.open } : blog)
-      )
-    }));
-  };
-
-  handleBlogLike = async blog => {
-    const updatedBlog = await blogService.update({
-      ...blog,
-      likes: blog.likes + 1
-    });
-    this.setState(prev => ({
-      blogs: prev.blogs.map(
-        blog =>
-          blog._id === updatedBlog._id
-            ? { ...blog, likes: updatedBlog.likes }
-            : blog
-      )
-    }));
-  };
-
-  handleBlogDelete = async ({ _id, title, author }) => {
-    if (!window.confirm(`delete '${title}' by ${author}`)) {
-      return;
-    }
-    await blogService.remove(_id);
-    this.setState(prev => ({
-      blogs: prev.blogs.filter(blog => blog._id !== _id)
-    }));
-  };
-
   render() {
-    if (!this.state.user) {
+    if (!this.props.user) {
       return (
-        <div>
-          {this.state.notification && (
-            <Notification {...this.state.notification} />
-          )}
-          <Login
-            formState={this.state.loginForm}
-            onInputChange={this.handleLoginInputChange}
-            onLogin={this.handleLogin}
-          />
-        </div>
+        <Container>
+          {this.props.notifications.map(notification => (
+            <Message error content={notification} />
+          ))}
+          <Login />
+        </Container>
       );
     }
     return (
-      <div>
-        <Container>
-          <Menu pointing secondary>
-            <Menu.Item as={NavLink} exact to="/">
-              Blogs
+      <Container>
+        <Menu pointing secondary>
+          <Menu.Item as={NavLink} exact to="/">
+            Blogs
+          </Menu.Item>
+          <Menu.Item as={NavLink} to="/users">
+            Users
+          </Menu.Item>
+          <Menu.Menu position="right">
+            <Menu.Item>
+              <Icon name="user" /> {this.props.user.name}
             </Menu.Item>
-            <Menu.Item as={NavLink} to="/users">
-              Users
-            </Menu.Item>
-            <Menu.Menu position="right">
-              <Menu.Item>
-                <Icon name="user" /> {this.state.user.name}
-              </Menu.Item>
-              <Menu.Item onClick={this.handleLogout}>Logout</Menu.Item>
-            </Menu.Menu>
-          </Menu>
-          {this.state.notification && (
-            <Notification {...this.state.notification} />
-          )}
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <BlogList
-                blogs={this.state.blogs}
-                onBlogDetailsToggle={this.handleBlogDetailsToggle}
-                onBlogLike={this.handleBlogLike}
-                onBlogDelete={this.handleBlogDelete}
-              />
-            )}
-          />
-          <Route
-            path="/blogs/create"
-            render={() => (
-              <Togglable
-                showLabel="show create blog"
-                hideLabel="hide create blog"
-              >
-                <BlogForm
-                  onSubmit={this.handleCreateBlog}
-                  onInputChange={this.handleBlogInputChange}
-                  formState={this.state.blogForm}
-                />
-              </Togglable>
-            )}
-          />
+            <Menu.Item onClick={this.props.logout}>Logout</Menu.Item>
+          </Menu.Menu>
+        </Menu>
+        {this.props.notifications.map(notification => (
+          <Message key={notification} success content={notification} />
+        ))}
+        <Switch>
           <Route path="/users" component={Users} />
-        </Container>
-      </div>
+          <Route component={Blogs} />
+        </Switch>
+      </Container>
     );
   }
 }
 
-export default App;
+export default withRouter(
+  connect(
+    ({ sessions: { user }, notifications: { notifications } }) => ({
+      user,
+      notifications
+    }),
+    { logout }
+  )(App)
+);

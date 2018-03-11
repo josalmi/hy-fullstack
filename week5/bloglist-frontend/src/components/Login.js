@@ -1,37 +1,44 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Form } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { login, sessionFormInputChange } from "../ducks/sessions";
+import { notify } from "../ducks/notifications";
 
-const Login = ({ onLogin, formState, onInputChange }) => (
-  <form onSubmit={onLogin}>
+const Login = ({ form, login, sessionFormInputChange, notify }) => (
+  <Form
+    onSubmit={e => {
+      e.preventDefault();
+      login(form);
+      notify("Logged in", 5000);
+    }}
+  >
     <h2>Log in to application</h2>
-    <div>
-      username{" "}
+    <Form.Field>
+      <label>Username</label>
       <input
         name="username"
-        value={formState.username}
-        onChange={onInputChange}
+        placeholder="Username"
+        value={form.username}
+        onChange={sessionFormInputChange}
       />
-    </div>
-    <div>
-      password{" "}
+    </Form.Field>
+    <Form.Field>
+      <label>Password</label>
       <input
         name="password"
         type="password"
-        value={formState.password}
-        onChange={onInputChange}
+        placeholder="Password"
+        value={form.password}
+        onChange={sessionFormInputChange}
       />
-    </div>
-    <button>login</button>
-  </form>
+    </Form.Field>
+    <Form.Button type="submit">login</Form.Button>
+  </Form>
 );
 
-Login.propTypes = {
-  onLogin: PropTypes.func.isRequired,
-  formState: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired
-  }).isRequired,
-  onInputChange: PropTypes.func.isRequired
-};
-
-export default Login;
+export default connect(({ sessions: { form } }) => ({ form }), {
+  login,
+  sessionFormInputChange,
+  notify
+})(Login);

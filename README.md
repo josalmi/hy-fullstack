@@ -182,16 +182,16 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 7.1 käyttäjien näkymä
 - [x] 7.2 yksittäisen käyttäjän näkymä, osa 1
 - [x] 7.3 yksittäisen käyttäjän näkymä osa, 2
-- [ ] 7.4 blogin näkymä
-- [ ] 7.5 navigointi
-- [ ] 7.6 kommentit, osa 1
-- [ ] 7.7 kommentit, osa 2
-- [ ] 7.8 redux, osa 1
-- [ ] 7.9 redux, osa 2
-- [ ] 7.10 redux, osa 3
-- [ ] 7.11 redux, osa 4
-- [ ] 7.12 tyylit, osa 1
-- [ ] 7.13 tyylit, osa 2
+- [x] 7.4 blogin näkymä
+- [x] 7.5 navigointi
+- [x] 7.6 kommentit, osa 1
+- [x] 7.7 kommentit, osa 2
+- [x] 7.8 redux, osa 1
+- [x] 7.9 redux, osa 2
+- [x] 7.10 redux, osa 3
+- [x] 7.11 redux, osa 4
+- [x] 7.12 tyylit, osa 1
+- [x] 7.13 tyylit, osa 2
 - [ ] 7.14 ESLint
 - [ ] 7.15 Webpack
 - [ ] 7.16 backendin testaus
@@ -201,4 +201,4 @@ Course material: <https://fullstack-hy.github.io/>
 - [ ] 7.20 Tyyppitarkastuksia
 - [ ] 7.21 Internet
 - [ ] 7.22 Jatkuva tuotantoonvienti
-- [ ] 7.23 Kurssipalaute
+- [x] 7.23 Kurssipalaute
