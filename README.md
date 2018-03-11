@@ -176,3 +176,29 @@ Course material: <https://fullstack-hy.github.io/>
 - [x] 6.21 styled anecdotes, osa 3
 - [x] 6.22 styled anecdotes, osa 4
 - [x] 6.23 styled anecdotes, osa 5
+
+## Week 7
+
+- [x] 7.1 käyttäjien näkymä
+- [ ] 7.2 yksittäisen käyttäjän näkymä, osa 1
+- [ ] 7.3 yksittäisen käyttäjän näkymä osa, 2
+- [ ] 7.4 blogin näkymä
+- [ ] 7.5 navigointi
+- [ ] 7.6 kommentit, osa 1
+- [ ] 7.7 kommentit, osa 2
+- [ ] 7.8 redux, osa 1
+- [ ] 7.9 redux, osa 2
+- [ ] 7.10 redux, osa 3
+- [ ] 7.11 redux, osa 4
+- [ ] 7.12 tyylit, osa 1
+- [ ] 7.13 tyylit, osa 2
+- [ ] 7.14 ESLint
+- [ ] 7.15 Webpack
+- [ ] 7.16 backendin testaus
+- [ ] 7.17 frontendin testaus
+- [ ] 7.18 snapshot-testaus
+- [ ] 7.19 headless-testaus
+- [ ] 7.20 Tyyppitarkastuksia
+- [ ] 7.21 Internet
+- [ ] 7.22 Jatkuva tuotantoonvienti
+- [ ] 7.23 Kurssipalaute

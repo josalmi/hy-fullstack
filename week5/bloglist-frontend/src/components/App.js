@@ -1,7 +1,10 @@
 import React from "react";
+import { Route, NavLink } from "react-router-dom";
+import { Segment, Container, Menu, Icon } from "semantic-ui-react";
 import Login from "./Login";
 import BlogList from "./BlogList";
 import BlogForm from "./BlogForm";
+import Users from "./Users";
 import Notification from "./Notification";
 import Togglable from "./Togglable";
 import blogService from "../services/blogs";
@@ -172,24 +175,53 @@ class App extends React.Component {
     }
     return (
       <div>
-        {this.state.notification && (
-          <Notification {...this.state.notification} />
-        )}
-        {this.state.user.name} logged in{" "}
-        <button onClick={this.handleLogout}>logout</button>
-        <BlogList
-          blogs={this.state.blogs}
-          onBlogDetailsToggle={this.handleBlogDetailsToggle}
-          onBlogLike={this.handleBlogLike}
-          onBlogDelete={this.handleBlogDelete}
-        />
-        <Togglable showLabel="show create blog" hideLabel="hide create blog">
-          <BlogForm
-            onSubmit={this.handleCreateBlog}
-            onInputChange={this.handleBlogInputChange}
-            formState={this.state.blogForm}
+        <Container>
+          <Menu pointing secondary>
+            <Menu.Item as={NavLink} exact to="/">
+              Blogs
+            </Menu.Item>
+            <Menu.Item as={NavLink} to="/users">
+              Users
+            </Menu.Item>
+            <Menu.Menu position="right">
+              <Menu.Item>
+                <Icon name="user" /> {this.state.user.name}
+              </Menu.Item>
+              <Menu.Item onClick={this.handleLogout}>Logout</Menu.Item>
+            </Menu.Menu>
+          </Menu>
+          {this.state.notification && (
+            <Notification {...this.state.notification} />
+          )}
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <BlogList
+                blogs={this.state.blogs}
+                onBlogDetailsToggle={this.handleBlogDetailsToggle}
+                onBlogLike={this.handleBlogLike}
+                onBlogDelete={this.handleBlogDelete}
+              />
+            )}
           />
-        </Togglable>
+          <Route
+            path="/blogs/create"
+            render={() => (
+              <Togglable
+                showLabel="show create blog"
+                hideLabel="hide create blog"
+              >
+                <BlogForm
+                  onSubmit={this.handleCreateBlog}
+                  onInputChange={this.handleBlogInputChange}
+                  formState={this.state.blogForm}
+                />
+              </Togglable>
+            )}
+          />
+          <Route path="/users" component={Users} />
+        </Container>
       </div>
     );
   }
