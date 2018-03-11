@@ -180,7 +180,7 @@ Course material: <https://fullstack-hy.github.io/>
 ## Week 7
 
 - [x] 7.1 käyttäjien näkymä
-- [ ] 7.2 yksittäisen käyttäjän näkymä, osa 1
+- [x] 7.2 yksittäisen käyttäjän näkymä, osa 1
 - [ ] 7.3 yksittäisen käyttäjän näkymä osa, 2
 - [ ] 7.4 blogin näkymä
 - [ ] 7.5 navigointi
