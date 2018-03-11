@@ -1,53 +1,33 @@
 import React from "react";
 import { Route, NavLink, Link, withRouter } from "react-router-dom";
 import {
+  Menu,
   Container,
   Segment,
   List,
   Grid,
   Image,
+  Form,
+  Message
 } from "semantic-ui-react";
 
-const Menu = () => (
-  <div style={{ background: "#444", padding: "0 5px" }}>
-    <NavLink
-      exact
-      to="/"
-      style={{
-        display: "inline-block",
-        color: "white",
-        textDecoration: "none",
-        padding: "5px 5px"
-      }}
-      activeStyle={{ background: "#999999" }}
-    >
-      anecdotes
-    </NavLink>&nbsp;
-    <NavLink
-      style={{
-        display: "inline-block",
-        color: "white",
-        textDecoration: "none",
-        padding: "5px 5px"
-      }}
-      activeStyle={{ background: "#999999" }}
-      to="/create"
-    >
-      create new
-    </NavLink>&nbsp;
-    <NavLink
-      style={{
-        display: "inline-block",
-        color: "white",
-        textDecoration: "none",
-        padding: "5px 5px"
-      }}
-      activeStyle={{ background: "#999999" }}
-      to="/about"
-    >
-      about
-    </NavLink>&nbsp;
-  </div>
+const Navigation = () => (
+  <Segment inverted vertical>
+    <Container>
+      <Menu inverted secondary>
+        <Menu.Item header>Software anecdotes</Menu.Item>
+        <Menu.Item as={NavLink} exact to="/">
+          anecdotes
+        </Menu.Item>
+        <Menu.Item as={NavLink} to="/create">
+          create new
+        </Menu.Item>
+        <Menu.Item as={NavLink} to="/about">
+          about
+        </Menu.Item>
+      </Menu>
+    </Container>
+  </Segment>
 );
 
 const AnecdoteList = ({ anecdotes }) => (
@@ -142,52 +122,43 @@ class CreateNew extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>create a new anecdote</h2>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            content
-            <input
-              name="content"
-              value={this.state.content}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div>
-            author
-            <input
-              name="author"
-              value={this.state.author}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div>
-            url for more info
-            <input
-              name="info"
-              value={this.state.info}
-              onChange={this.handleChange}
-            />
-          </div>
-          <button>create</button>
-        </form>
-      </div>
+      <Form onSubmit={this.handleSubmit}>
+        <h2>Create a new anecdote</h2>
+        <Form.Field>
+          <label>Content</label>
+          <input
+            name="content"
+            placeholder="Content"
+            value={this.state.content}
+            onChange={this.handleChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Author</label>
+          <input
+            name="author"
+            placeholder="Author"
+            value={this.state.author}
+            onChange={this.handleChange}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>URL for more info</label>
+          <input
+            name="info"
+            placeholder="URL"
+            value={this.state.info}
+            onChange={this.handleChange}
+          />
+        </Form.Field>
+        <Form.Button>create</Form.Button>
+      </Form>
     );
   }
 }
 
 const Notification = ({ message }) => (
-  <div
-    style={{
-      marginTop: "5px",
-      padding: "5px",
-      color: "green",
-      border: "1px solid green",
-      borderRadius: "7px"
-    }}
-  >
-    {message}
-  </div>
+  <Message positive icon="check" content={message} />
 );
 
 class App extends React.Component {
@@ -245,34 +216,39 @@ class App extends React.Component {
 
   render() {
     return (
-      <Container>
-        <h1>Software anecdotes</h1>
-        <Menu />
-        {this.state.notification && (
-          <Notification message={this.state.notification} />
-        )}
-        <Route
-          exact
-          path="/"
-          render={() => <AnecdoteList anecdotes={this.state.anecdotes} />}
-        />
-        <Route
-          path="/anecdotes/:id"
-          render={({ match: { params: { id } } }) => (
-            <Anecdote anecdote={this.anecdoteById(id)} />
-          )}
-        />
-        <Route path="/about" render={() => <About />} />
-        <Route
-          path="/create"
-          render={({ history }) => (
-            <CreateNew history={history} addNew={this.addNew} />
-          )}
-        />
-        <Segment inverted>
-          <Footer />
+      <div>
+        <Navigation />
+        <Segment vertical padded="very">
+          <Container>
+            {this.state.notification && (
+              <Notification message={this.state.notification} />
+            )}
+            <Route
+              exact
+              path="/"
+              render={() => <AnecdoteList anecdotes={this.state.anecdotes} />}
+            />
+            <Route
+              path="/anecdotes/:id"
+              render={({ match: { params: { id } } }) => (
+                <Anecdote anecdote={this.anecdoteById(id)} />
+              )}
+            />
+            <Route path="/about" render={() => <About />} />
+            <Route
+              path="/create"
+              render={({ history }) => (
+                <CreateNew history={history} addNew={this.addNew} />
+              )}
+            />
+          </Container>
         </Segment>
-      </Container>
+        <Segment inverted vertical>
+          <Container>
+            <Footer />
+          </Container>
+        </Segment>
+      </div>
     );
   }
 }
