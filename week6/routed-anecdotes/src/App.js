@@ -1,6 +1,12 @@
 import React from "react";
 import { Route, NavLink, Link, withRouter } from "react-router-dom";
-import { Container, Segment, List } from "semantic-ui-react";
+import {
+  Container,
+  Segment,
+  List,
+  Grid,
+  Image,
+} from "semantic-ui-react";
 
 const Menu = () => (
   <div style={{ background: "#444", padding: "0 5px" }}>
@@ -70,25 +76,30 @@ const Anecdote = ({ anecdote: { content, votes, info, author } }) => (
 );
 
 const About = () => (
-  <div>
-    <h2>About anecdote app</h2>
-    <p>According to Wikipedia:</p>
+  <Grid>
+    <Grid.Column width={12}>
+      <h2>About anecdote app</h2>
+      <p>According to Wikipedia:</p>
 
-    <em>
-      An anecdote is a brief, revealing account of an individual person or an
-      incident. Occasionally humorous, anecdotes differ from jokes because their
-      primary purpose is not simply to provoke laughter but to reveal a truth
-      more general than the brief tale itself, such as to characterize a person
-      by delineating a specific quirk or trait, to communicate an abstract idea
-      about a person, place, or thing through the concrete details of a short
-      narrative. An anecdote is "a story with a point."
-    </em>
+      <em>
+        An anecdote is a brief, revealing account of an individual person or an
+        incident. Occasionally humorous, anecdotes differ from jokes because
+        their primary purpose is not simply to provoke laughter but to reveal a
+        truth more general than the brief tale itself, such as to characterize a
+        person by delineating a specific quirk or trait, to communicate an
+        abstract idea about a person, place, or thing through the concrete
+        details of a short narrative. An anecdote is "a story with a point."
+      </em>
 
-    <p>
-      Software engineering is full of excellent anecdotes, at this app you can
-      find the best and add more.
-    </p>
-  </div>
+      <p>
+        Software engineering is full of excellent anecdotes, at this app you can
+        find the best and add more.
+      </p>
+    </Grid.Column>
+    <Grid.Column width={4}>
+      <Image src="/alan-turing.jpg" />
+    </Grid.Column>
+  </Grid>
 );
 
 const Footer = () => (
